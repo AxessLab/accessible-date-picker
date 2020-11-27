@@ -12,7 +12,6 @@ const DaysOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
 
     const firstDayOfMonth = () => {
         const firstDay = moment().year(year).month(month).startOf("month").format("d");
-        //console.log("firstday ", firstDay)
         return +firstDay;
     };
 

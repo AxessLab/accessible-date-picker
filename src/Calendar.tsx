@@ -3,14 +3,19 @@ import ReactDOM from "react-dom";
 import styles from "./styles/stylesCalendar.css";
 import { days } from "./utils/utils";
 import Heading from "./components/Heading";
+import DaysOfMonth from "./components/DaysOfMonth";
 
 const Calendar: React.FC = () => {
   const [month, setMonth] = useState(0);
+  const [year, setYear] = useState(0);
 
   useEffect(() => {
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+
     setMonth(currentMonth);
+    setYear(currentYear);
   }, []);
 
   return (
@@ -32,13 +37,7 @@ const Calendar: React.FC = () => {
         </thead>
         <tbody role='presentation'>
           <tr role='presentation'>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
+            <DaysOfMonth month={month} year={year} />
           </tr>
         </tbody>
       </table>

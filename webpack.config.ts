@@ -33,6 +33,7 @@ const config: webpack.Configuration = {
       },
     ],
   },
+  devtool: "source-map",
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".css", ".scss"],
   },

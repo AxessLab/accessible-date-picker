@@ -33,23 +33,21 @@ const DaysOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
     }
 
     const totalCellsOfCalendar = [...blankCells, ...daysInMonth];
-    const rows: any[][] = [];
-    let cells: any[] = [];
+    const rows: unknown[] = [];
+    let cells: unknown[] = [];
 
     totalCellsOfCalendar.forEach((row, i) => {
         if (i % 7 !== 0) {
-            cells.push(row); // if index not equal 7 that means not go to next week
+            cells.push(row); // if index not equal 7 dont go to next week
         } else {
-            rows.push(cells); // when reach next week we contain all td in last week to rows 
+            rows.push(cells); // when next week reached, contain all td in last week to rows 
             cells = []; // empty container 
-            cells.push(row); // in current loop we still push current row to new container
+            cells.push(row); // in current loop still push current row to the new container
         }
-        if (i === totalCellsOfCalendar.length - 1) { // when end loop we add remaining date
+        if (i === totalCellsOfCalendar.length - 1) { // when loop ends, add the remaining date
             rows.push(cells);
         }
     });
-
-
 
     return (<>
         { rows.map((date, i) =>

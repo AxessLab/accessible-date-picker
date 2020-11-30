@@ -1,16 +1,15 @@
 import React from "react";
-import moment from 'moment';
 
-const TableHeading: React.FC = () => {
-    const weekdaysAbbr = moment.weekdaysShort();
+const DaysHeading: React.FC = () => {
+    const weekdaysAbbr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     return (
         <thead role='presentation'>
             <tr role='presentation'>
-                {weekdaysAbbr.map((day: string, i: number) => (
+                {weekdaysAbbr.map((day, i) => (
                     <th key={i} scope='col' role='presentation'>
                         <abbr key={i} aria-hidden='true' title={day}>
-                            {day.slice(0, 2)}
+                            {day}
                         </abbr>
                     </th>
                 ))}
@@ -19,4 +18,4 @@ const TableHeading: React.FC = () => {
     );
 };
 
-export default TableHeading;
+export default DaysHeading;

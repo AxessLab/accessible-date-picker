@@ -1,5 +1,6 @@
 import React from "react";
 import moment from 'moment';
+import styles from "../styles/stylesCalendar.css";
 
 interface DaysOfMonthsProps {
     year: number;
@@ -7,7 +8,7 @@ interface DaysOfMonthsProps {
     daysOfMonth: number;
 }
 
-const DaysOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
+const DatesOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
     const { year, month, daysOfMonth } = props
 
     const firstDayOfMonth = () => {
@@ -26,33 +27,34 @@ const DaysOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
     for (let day = 1; day <= daysOfMonth; day++) {
         datesInMonth.push(
             <td key={day} role="presentation">
-                <button>{day}</button>
+                <button className={styles.calendarCells}>{day}</button>
             </td>
         );
     }
 
     const totalDateElementsOfCalendar = [...blankCells, ...datesInMonth];
     const calendarRows: (JSX.Element | JSX.Element[])[] = [];
-    let calendarSlot: JSX.Element[] = [];
+    let calendarSlots: JSX.Element[] = [];
 
     totalDateElementsOfCalendar.forEach((dateElement, i) => {
         if (i % 7 !== 0) {
-            calendarSlot.push(dateElement); // if index is not equal to 7 dont go to next week
+            calendarSlots.push(dateElement); // if index is not equal to 7 dont go to next week
         } else {
-            calendarRows.push(calendarSlot); // when next week is reached, contain all td in last week to calendarRows 
-            calendarSlot = []; // empty container 
-            calendarSlot.push(dateElement); // in current loop still push current dateElement to the new container
+            calendarRows.push(calendarSlots); // when next week is reached, contain all td in last week to calendarRows 
+            calendarSlots = []; // empty container 
+            calendarSlots.push(dateElement); // in current loop still push current dateElement to the new container
         }
-        if (i === totalDateElementsOfCalendar.length - 1) { // when loop ends, add the remaining date
-            calendarRows.push(calendarSlot);
+        if (i === totalDateElementsOfCalendar.length - 1) { // when loop ends, add the remaining dates
+            calendarRows.push(calendarSlots);
         }
     });
 
-    return (<>
-        { calendarRows.map((date, i) =>
-            (<tr key={i} role="presentation"> {date} </tr>))
-        }
-    </>)
+    return (
+        <tbody role='presentation'>
+            { calendarRows.map((date, i) =>
+                (<tr key={i} role="presentation" > {date} </tr>))
+            }
+        </tbody>)
 };
 
-export default DaysOfMonth;
+export default DatesOfMonth;

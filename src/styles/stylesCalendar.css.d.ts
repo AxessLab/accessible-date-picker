@@ -1,6 +1,9 @@
 declare namespace StylesCalendarCssNamespace {
   export interface IStylesCalendarCss {
+    calendarCells: string;
     calendarContainer: string;
+    calendarTableContainer: string;
+    monthPickerContainer: string;
   }
 }
 

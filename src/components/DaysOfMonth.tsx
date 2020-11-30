@@ -15,41 +15,41 @@ const DaysOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
         return +firstDay;
     };
 
-    const blankCells = [];
+    const blankCells: JSX.Element[] = [];
     for (let i = 0; i < firstDayOfMonth(); i++) {
         blankCells.push(
             <td role="presentation">No!</td>
         );
     }
 
-    const daysInMonth = [];
+    const datesInMonth: JSX.Element[] = [];
     for (let day = 1; day <= daysOfMonth; day++) {
-        daysInMonth.push(
+        datesInMonth.push(
             <td key={day} role="presentation">
                 <button>{day}</button>
             </td>
         );
     }
 
-    const totalCellsOfCalendar = [...blankCells, ...daysInMonth];
-    const rows: unknown[] = [];
-    let cells: unknown[] = [];
+    const totalDateElementsOfCalendar = [...blankCells, ...datesInMonth];
+    const calendarRows: (JSX.Element | JSX.Element[])[] = [];
+    let calendarSlot: JSX.Element[] = [];
 
-    totalCellsOfCalendar.forEach((row, i) => {
+    totalDateElementsOfCalendar.forEach((dateElement, i) => {
         if (i % 7 !== 0) {
-            cells.push(row); // if index not equal 7 dont go to next week
+            calendarSlot.push(dateElement); // if index is not equal to 7 dont go to next week
         } else {
-            rows.push(cells); // when next week reached, contain all td in last week to rows 
-            cells = []; // empty container 
-            cells.push(row); // in current loop still push current row to the new container
+            calendarRows.push(calendarSlot); // when next week is reached, contain all td in last week to calendarRows 
+            calendarSlot = []; // empty container 
+            calendarSlot.push(dateElement); // in current loop still push current dateElement to the new container
         }
-        if (i === totalCellsOfCalendar.length - 1) { // when loop ends, add the remaining date
-            rows.push(cells);
+        if (i === totalDateElementsOfCalendar.length - 1) { // when loop ends, add the remaining date
+            calendarRows.push(calendarSlot);
         }
     });
 
     return (<>
-        { rows.map((date, i) =>
+        { calendarRows.map((date, i) =>
             (<tr key={i} role="presentation"> {date} </tr>))
         }
     </>)

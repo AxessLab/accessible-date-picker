@@ -3,10 +3,10 @@ import ReactDOM from "react-dom";
 import moment from "moment"
 import styles from "../styles/stylesCalendar.css";
 
-import Heading from "./Heading";
-import MonthPicker from "./MonthPicker";
-import DaysHeading from "./DaysHeading";
-import DatesOfMonth from "./DatesOfMonth";
+import Heading from "../components/Heading";
+import MonthPicker from "../components/MonthPicker";
+import DaysHeading from "../components/DaysHeading";
+import DatesOfMonth from "../components/DatesOfMonth";
 
 const Calendar: React.FC = () => {
   const [currentDate] = useState(moment());
@@ -59,7 +59,7 @@ const Calendar: React.FC = () => {
         <DatesOfMonth
           year={dateObject.year}
           month={dateObject.month}
-          daysOfMonth={dateObject.dates}
+          datesOfMonth={dateObject.dates}
         />
       </table>
     </div>

@@ -5,16 +5,21 @@ import styles from "../styles/stylesCalendar.css";
 interface DaysOfMonthsProps {
     year: number;
     month: number;
-    daysOfMonth: number;
+    datesOfMonth: number;
 }
 
 const DatesOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
-    const { year, month, daysOfMonth } = props
+    const { year, month, datesOfMonth } = props
 
     const firstDayOfMonth = () => {
         const firstDay = moment().year(year).month(month).startOf("month").format("d");
         return +firstDay;
     };
+
+    const dayOfDate = (year: number, month: number, date: number) => {
+        const day = moment(`${year}-${month + 1}-${date}`, "YYYY-MM-DD").format('dddd MMMM Do YYYY');
+        return day;
+    }
 
     const blankCells: JSX.Element[] = [];
     for (let i = 0; i < firstDayOfMonth(); i++) {
@@ -24,10 +29,14 @@ const DatesOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
     }
 
     const datesInMonth: JSX.Element[] = [];
-    for (let day = 1; day <= daysOfMonth; day++) {
+    for (let date = 1; date <= datesOfMonth; date++) {
         datesInMonth.push(
-            <td key={day} role="presentation">
-                <button className={styles.calendarCells} tabIndex={0} aria-pressed="false">{day}</button>
+            <td key={date} role="presentation">
+                <button
+                    key={`button-${date}`}
+                    className={styles.calendarCells}
+                    tabIndex={0}
+                    aria-label={dayOfDate(year, month, date)}>{date}</button>
             </td>
         );
     }

@@ -1,7 +1,7 @@
 import React from "react";
 
 const DaysHeading: React.FC = () => {
-    const weekdaysAbbr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const weekdaysAbbr = ['Sunday', 'Monday', 'Tueday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     return (
         <thead role='presentation'>
@@ -9,7 +9,7 @@ const DaysHeading: React.FC = () => {
                 {weekdaysAbbr.map((day, i) => (
                     <th key={i} scope='col' role='presentation'>
                         <abbr key={i} aria-hidden='true' title={day}>
-                            {day}
+                            {day.slice(0, 3)}
                         </abbr>
                     </th>
                 ))}

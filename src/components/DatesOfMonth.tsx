@@ -19,7 +19,7 @@ const DatesOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
     const blankCells: JSX.Element[] = [];
     for (let i = 0; i < firstDayOfMonth(); i++) {
         blankCells.push(
-            <td role="presentation">No!</td>
+            <td role="presentation" className={styles.disabled}></td>
         );
     }
 
@@ -27,12 +27,12 @@ const DatesOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
     for (let day = 1; day <= daysOfMonth; day++) {
         datesInMonth.push(
             <td key={day} role="presentation">
-                <button className={styles.calendarCells}>{day}</button>
+                <button className={styles.calendarCells} tabIndex={0} aria-pressed="false">{day}</button>
             </td>
         );
     }
 
-    const totalDateElementsOfCalendar = [...blankCells, ...datesInMonth];
+    const totalDateElementsOfCalendar: JSX.Element[] = [...blankCells, ...datesInMonth];
     const calendarRows: (JSX.Element | JSX.Element[])[] = [];
     let calendarSlots: JSX.Element[] = [];
 
@@ -52,7 +52,7 @@ const DatesOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
     return (
         <tbody role='presentation'>
             { calendarRows.map((date, i) =>
-                (<tr key={i} role="presentation" > {date} </tr>))
+                (<tr key={i} role="presentation"> {date} </tr>))
             }
         </tbody>)
 };

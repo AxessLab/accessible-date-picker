@@ -1,39 +1,66 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import moment from "moment"
 import styles from "../styles/stylesCalendar.css";
 
 import Heading from "./Heading";
-import MonthPicker from "./MonthPicker"
-import DatesOfMonth from "./DatesOfMonth";
+import MonthPicker from "./MonthPicker";
 import DaysHeading from "./DaysHeading";
-
+import DatesOfMonth from "./DatesOfMonth";
 
 const Calendar: React.FC = () => {
   const [currentDate] = useState(moment());
-  const [dateObject] = useState({
-    year: currentDate.year(),
-    month: currentDate.month(),
-    date: currentDate.date()
+
+  const [dateObject, setDateObject] = useState({
+    year: +currentDate.year(),
+    month: +currentDate.month(),
+    dates: +currentDate.daysInMonth()
   });
 
-  // const nextMonthHandler = () => {};
+  type changeMonthParameter = "next" | "previous";
+  const changeMonthHandler = (selection: changeMonthParameter) => {
+    let selectedYear = dateObject.year;
+    let selectedMonth = dateObject.month;
 
-  // const previousMonthHandler = () => {};
+    if (selection === "next") {
+      if (selectedMonth + 1 === 12) {
+        selectedYear++;
+        selectedMonth = 0;
+      } else {
+        selectedMonth++;
+      }
+    }
 
-  useEffect(() => {
-    console.log(currentDate);
-    console.log(dateObject)
-  }), [];
+    if (selection === "previous") {
+      if (selectedMonth - 1 >= 0) {
+        selectedMonth--;
+      } else {
+        selectedYear--;
+        selectedMonth = 11;
+      }
+    }
+
+    const selectedDates = +moment(`${selectedYear}-${selectedMonth + 1}`, "YYYY-MM").daysInMonth();
+
+    setDateObject({
+      year: selectedYear,
+      month: selectedMonth,
+      dates: selectedDates
+    });
+
+  };
 
   return (
     <div className={styles.calendarContainer}>
       <Heading />
-      {/* This is where the input is going */}
-      <MonthPicker month={dateObject.month} year={dateObject.year} />
+      <MonthPicker month={dateObject.month} year={dateObject.year} changeMonthHandler={changeMonthHandler} />
       <table id='calendar-table' className={styles.calendarTableContainer}>
         <DaysHeading />
-        <DatesOfMonth year={dateObject.year} month={dateObject.month} daysOfMonth={dateObject.date} />
+        <DatesOfMonth
+          year={dateObject.year}
+          month={dateObject.month}
+          daysOfMonth={dateObject.dates}
+        />
       </table>
     </div>
   );

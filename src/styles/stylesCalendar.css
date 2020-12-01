@@ -4,6 +4,11 @@
   box-sizing: content-box;
 }
 
+:root {
+  --main: #f5f5f5;
+  --secondary: #8f8f8f;
+}
+
 abbr {
   border: none;
   text-decoration: none;
@@ -24,13 +29,17 @@ abbr {
 }
 
 .calendarTableContainer {
-  background-color: #f5f5f5;
-  border: 1px solid #888;
+  background-color: var(--main);
+  border: 1px solid var(--secondary);
   padding: 0.5rem;
 }
 
 .calendarCells {
   border: none;
-  background-color: #f5f5f5;
+  background-color: var(--main);
   width: 100%;
+}
+
+.disabled {
+  background-color: var(--main);
 }

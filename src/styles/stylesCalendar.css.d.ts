@@ -3,6 +3,7 @@ declare namespace StylesCalendarCssNamespace {
     calendarCells: string;
     calendarContainer: string;
     calendarTableContainer: string;
+    disabled: string;
     monthPickerContainer: string;
   }
 }

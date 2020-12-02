@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from 'moment';
 import styles from "../styles/stylesCalendar.css";
 
@@ -6,10 +6,20 @@ interface DaysOfMonthsProps {
     year: number;
     month: number;
     datesOfMonth: number;
+    setClickedDate: ({ }) => void;
 }
 
 const DatesOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
-    const { year, month, datesOfMonth } = props
+    const { year, month, datesOfMonth, setClickedDate } = props
+    const [isClicked, setIsClicked] = useState({
+        buttonId: "",
+        selected: false
+    });
+
+    const clickedDateHandler = (year: number, month: number, date: number, buttonId: string) => {
+        setClickedDate({ year: year, month: month + 1, date: date });
+        setIsClicked({ buttonId: buttonId, selected: true });
+    };
 
     const firstDayOfMonth = () => {
         const firstDay = moment().year(year).month(month).startOf("month").format("d");
@@ -33,10 +43,16 @@ const DatesOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
         datesInMonth.push(
             <td key={date} role="presentation">
                 <button
+                    id={`button-${date}`}
                     key={`button-${date}`}
-                    className={styles.calendarCells}
-                    tabIndex={0}
-                    aria-label={dayOfDate(year, month, date)}>{date}</button>
+                    className={`${styles.calendarCells} ${isClicked.buttonId === `button-${date}` && isClicked.selected ? styles.clickedDateButton : ""}`}
+                    onClick={() => clickedDateHandler(year, month, date, `button-${date}`)}
+                    tabIndex={isClicked.buttonId === `button-${date}` && isClicked.selected ? 0 : -1}
+                    aria-label={`${isClicked.buttonId === `button-${date}` && isClicked.selected ? "Selected date." : ""} ${dayOfDate(year, month, date)}`}
+                    aria-pressed={isClicked.buttonId === `button-${date}` && isClicked.selected ? true : false}
+                >
+                    {date}
+                </button>
             </td>
         );
     }

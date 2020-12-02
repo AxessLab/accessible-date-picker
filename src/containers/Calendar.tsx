@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import moment from "moment"
 import styles from "../styles/stylesCalendar.css";
@@ -16,6 +16,19 @@ const Calendar: React.FC = () => {
     month: +currentDate.month(),
     dates: +currentDate.daysInMonth()
   });
+
+  const [clickedDate, setClickedDate] = useState({});
+
+  useEffect(() => {
+    setClickedDate({
+      ...clickedDate,
+      year: dateObject.year,
+      month: dateObject.month + 1
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dateObject]);
+
+  console.log("Selected date is: ", clickedDate);
 
   type changeMonthParameter = "next" | "previous";
   const changeMonthHandler = (selection: changeMonthParameter) => {
@@ -53,13 +66,17 @@ const Calendar: React.FC = () => {
   return (
     <div className={styles.calendarContainer}>
       <Heading />
-      <MonthPicker month={dateObject.month} year={dateObject.year} changeMonthHandler={changeMonthHandler} />
+      <MonthPicker
+        month={dateObject.month}
+        year={dateObject.year}
+        changeMonthHandler={changeMonthHandler} />
       <table id='calendar-table' className={styles.calendarTableContainer}>
         <DaysHeading />
         <DatesOfMonth
           year={dateObject.year}
           month={dateObject.month}
           datesOfMonth={dateObject.dates}
+          setClickedDate={setClickedDate}
         />
       </table>
     </div>

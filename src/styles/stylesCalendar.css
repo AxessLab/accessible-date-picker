@@ -43,3 +43,7 @@ abbr {
 .disabled {
   background-color: var(--main);
 }
+
+.clickedDateButton {
+  color: salmon;
+}

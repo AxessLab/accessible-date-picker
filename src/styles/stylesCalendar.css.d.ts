@@ -5,7 +5,8 @@ declare namespace StylesCalendarCssNamespace {
     calendarTableContainer: string;
     clickedDateButton: string;
     disabled: string;
-    monthPickerContainer: string;
+    nextButton: string;
+    previousButton: string;
   }
 }
 

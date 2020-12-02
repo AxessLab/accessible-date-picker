@@ -14,12 +14,12 @@ const MonthPicker: React.FC<MonthPickerProps> = (props) => {
     const { month, year, changeMonthHandler } = props
 
     return (
-        <div className={styles.monthPickerContainer}>
-            <button onClick={() => { changeMonthHandler("previous") }}>Previous</button>
+        <div>
+            <button className={styles.previousButton} onClick={() => { changeMonthHandler("previous") }}>Previous</button>
             <h2 id="month-label" aria-live="polite">{monthArray[month]}{" "}{year}</h2>
-            <button onClick={() => { changeMonthHandler("next") }}>Next</button>
+            <button className={styles.nextButton} onClick={() => { changeMonthHandler("next") }}>Next</button>
         </div>
     );
-};
+};  
 
 export default MonthPicker;

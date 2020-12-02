@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import moment from "moment"
 import styles from "../styles/stylesCalendar.css";
 
-import Heading from "../components/Heading";
 import MonthPicker from "../components/MonthPicker";
 import DaysHeading from "../components/DaysHeading";
 import DatesOfMonth from "../components/DatesOfMonth";
@@ -65,7 +64,6 @@ const Calendar: React.FC = () => {
 
   return (
     <div className={styles.calendarContainer}>
-      <Heading />
       <MonthPicker
         month={dateObject.month}
         year={dateObject.year}

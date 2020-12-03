@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import moment from "moment"
+import moment from "moment";
 import styles from "../styles/stylesCalendar.css";
 
 import MonthPicker from "../components/MonthPicker";
@@ -68,7 +68,7 @@ const Calendar: React.FC = () => {
         month={dateObject.month}
         year={dateObject.year}
         changeMonthHandler={changeMonthHandler} />
-      <table id='calendar-table' className={styles.calendarTableContainer}>
+      <table id='calendar-table' className={styles.calendarTableContainer} role="presentation">
         <DaysHeading />
         <DatesOfMonth
           year={dateObject.year}

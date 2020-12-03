@@ -42,7 +42,7 @@ h2 {
   background-color: var(--main);
   border-top: solid var(--secondary) 2px;
   border-radius: 0 0 5px 5px;
-  padding: 12px;
+  padding: 12px 12px 0px 12px;
 }
 
 .calendarCells {

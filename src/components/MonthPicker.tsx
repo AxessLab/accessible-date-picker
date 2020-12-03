@@ -16,7 +16,7 @@ const MonthPicker: React.FC<MonthPickerProps> = (props) => {
     return (
         <div>
             <button className={styles.previousButton} onClick={() => { changeMonthHandler("previous") }}>Previous</button>
-            <h2 id="month-label" aria-live="polite">{monthArray[month]}{" "}{year}</h2>
+            <h2 id="month-label" aria-live="assertive">{monthArray[month]}{" "}{year}</h2>
             <button className={styles.nextButton} onClick={() => { changeMonthHandler("next") }}>Next</button>
         </div>
     );

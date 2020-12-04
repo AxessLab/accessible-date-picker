@@ -27,20 +27,34 @@ const Calendar: React.FC = () => {
   console.log("Selected date is: ", clickedDate);
 
   const keyDownHandler = (event: React.KeyboardEvent) => {
-    event.preventDefault();
+    const eventTarget = event.target as HTMLElement
+    const currentElementId = eventTarget.id.slice(-2) as string;
+
+    const sliceChecker = (elementId: string): number => {
+      if (elementId[0] === "-") {
+        return +elementId.slice(-1)
+      } else {
+        return +elementId
+      }
+    }
 
     if (event.key === "ArrowLeft") {
-      // event.target.parentElement.nextElementSibling.firstElementChild.focus();
-    }
-    if (event.key === "ArrowUp") {
-      console.log("keys.up");
+      event.preventDefault();
+      if ((document.getElementById(`button-${sliceChecker(currentElementId) - 1}`) as HTMLButtonElement) === null) {
+        return;
+      } else {
+        (document.getElementById(`button-${sliceChecker(currentElementId) - 1}`) as HTMLButtonElement).focus();
+      }
     }
     if (event.key === "ArrowRight") {
-      console.log("keys.right");
+      event.preventDefault();
+      if ((document.getElementById(`button-${sliceChecker(currentElementId) + 1}`) as HTMLButtonElement) === null) {
+        return;
+      } else {
+        (document.getElementById(`button-${sliceChecker(currentElementId) + 1}`) as HTMLButtonElement).focus();
+      }
     }
-    if (event.key === "ArrowDown") {
-      console.log("keys.down");
-    }
+
   };
 
   return (

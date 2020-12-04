@@ -58,7 +58,7 @@ const Calendar: React.FC = () => {
   };
 
   return (
-    <div className={styles.calendarContainer}>
+    <div className={styles.calendarContainer} role="application">
       <MonthPicker
         month={dateObject.month}
         year={dateObject.year}

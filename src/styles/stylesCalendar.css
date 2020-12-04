@@ -11,7 +11,7 @@ body {
 :root {
   --main: #f5f5f5;
   --secondary: #2b4450;
-  --third: #873800;
+  --third: #871111;
 }
 
 abbr {
@@ -53,22 +53,31 @@ h2 {
   color: var(--secondary);
 }
 
-.previousButton {
-  float: left;
+.monthSelectionButtons {
+  width: 60px;
   border: none;
   line-height: 20px;
   padding: 12px;
   color: var(--third);
   background-color: var(--main);
+  font-size: medium;
+  text-decoration: underline;
+}
+
+.previousButton {
+  float: left;
+}
+.previousButton:hover {
+  color: var(--main);
+  background-color: var(--third);
 }
 
 .nextButton {
   float: right;
-  border: none;
-  line-height: 20px;
-  padding: 12px;
-  color: var(--third);
-  background-color: var(--main);
+}
+.nextButton:hover {
+  color: var(--main);
+  background-color: var(--third);
 }
 
 .disabled {

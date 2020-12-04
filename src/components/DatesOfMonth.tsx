@@ -41,7 +41,7 @@ const DatesOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
     const datesInMonth: JSX.Element[] = [];
     for (let date = 1; date <= datesOfMonth; date++) {
         datesInMonth.push(
-            <td key={date} role="presentation">
+            <td id={`tabledata-${date}`} key={date} role="presentation" tabIndex={`tabledata-${date}` === "tabledata-1" ? 0 : -1}>
                 <button
                     id={`button-${date}`}
                     key={`button-${date}`}

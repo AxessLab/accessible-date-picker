@@ -8,15 +8,12 @@ import DaysHeading from "../components/DaysHeading";
 import DatesOfMonth from "../components/DatesOfMonth";
 
 const Calendar: React.FC = () => {
-  const [currentDate] = useState(moment());
-
-  const [dateObject, setDateObject] = useState({
-    year: +currentDate.year(),
-    month: +currentDate.month(),
-    dates: +currentDate.daysInMonth()
-  });
-
   const [clickedDate, setClickedDate] = useState({});
+  const [dateObject, setDateObject] = useState({
+    year: +moment().year(),
+    month: +moment().month(),
+    dates: +moment().daysInMonth(),
+  });
 
   useEffect(() => {
     setClickedDate({
@@ -29,36 +26,34 @@ const Calendar: React.FC = () => {
 
   console.log("Selected date is: ", clickedDate);
 
-  type changeMonthParameter = "next" | "previous";
-  const changeMonthHandler = (selection: changeMonthParameter) => {
-    let selectedYear = dateObject.year;
-    let selectedMonth = dateObject.month;
+  const keyDownHandler = (event: React.KeyboardEvent) => {
+    const eventTarget = event.target as HTMLElement
+    const currentElementId = eventTarget.id.slice(-2) as string;
 
-    if (selection === "next") {
-      if (selectedMonth + 1 === 12) {
-        selectedYear++;
-        selectedMonth = 0;
+    const sliceChecker = (elementId: string): number => {
+      if (elementId[0] === "-") {
+        return +elementId.slice(-1)
       } else {
-        selectedMonth++;
+        return +elementId
       }
     }
 
-    if (selection === "previous") {
-      if (selectedMonth - 1 >= 0) {
-        selectedMonth--;
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      if ((document.getElementById(`button-${sliceChecker(currentElementId) - 1}`) as HTMLButtonElement) === null) {
+        return;
       } else {
-        selectedYear--;
-        selectedMonth = 11;
+        (document.getElementById(`button-${sliceChecker(currentElementId) - 1}`) as HTMLButtonElement).focus();
       }
     }
-
-    const selectedDates = +moment(`${selectedYear}-${selectedMonth + 1}`, "YYYY-MM").daysInMonth();
-
-    setDateObject({
-      year: selectedYear,
-      month: selectedMonth,
-      dates: selectedDates
-    });
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      if ((document.getElementById(`button-${sliceChecker(currentElementId) + 1}`) as HTMLButtonElement) === null) {
+        return;
+      } else {
+        (document.getElementById(`button-${sliceChecker(currentElementId) + 1}`) as HTMLButtonElement).focus();
+      }
+    }
 
   };
 
@@ -67,8 +62,8 @@ const Calendar: React.FC = () => {
       <MonthPicker
         month={dateObject.month}
         year={dateObject.year}
-        changeMonthHandler={changeMonthHandler} />
-      <table id='calendar-table' className={styles.calendarTableContainer} role="presentation">
+        setDateObject={setDateObject} />
+      <table id='calendar-table' className={styles.calendarTableContainer} role="presentation" onKeyDown={keyDownHandler}>
         <DaysHeading />
         <DatesOfMonth
           year={dateObject.year}
@@ -79,6 +74,7 @@ const Calendar: React.FC = () => {
       </table>
     </div>
   );
+
 };
 
 ReactDOM.render(<Calendar />, document.getElementById("root"));

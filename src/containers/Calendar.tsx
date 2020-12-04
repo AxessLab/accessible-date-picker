@@ -26,44 +26,13 @@ const Calendar: React.FC = () => {
 
   console.log("Selected date is: ", clickedDate);
 
-  const keyDownHandler = (event: React.KeyboardEvent) => {
-    const eventTarget = event.target as HTMLElement
-    const currentElementId = eventTarget.id.slice(-2) as string;
-
-    const sliceChecker = (elementId: string): number => {
-      if (elementId[0] === "-") {
-        return +elementId.slice(-1)
-      } else {
-        return +elementId
-      }
-    }
-
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      if ((document.getElementById(`button-${sliceChecker(currentElementId) - 1}`) as HTMLButtonElement) === null) {
-        return;
-      } else {
-        (document.getElementById(`button-${sliceChecker(currentElementId) - 1}`) as HTMLButtonElement).focus();
-      }
-    }
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      if ((document.getElementById(`button-${sliceChecker(currentElementId) + 1}`) as HTMLButtonElement) === null) {
-        return;
-      } else {
-        (document.getElementById(`button-${sliceChecker(currentElementId) + 1}`) as HTMLButtonElement).focus();
-      }
-    }
-
-  };
-
   return (
-    <div className={styles.calendarContainer} role="application">
+    <div className={styles.calendarContainer}>
       <MonthPicker
         month={dateObject.month}
         year={dateObject.year}
         setDateObject={setDateObject} />
-      <table id='calendar-table' className={styles.calendarTableContainer} role="presentation" onKeyDown={keyDownHandler}>
+      <table id='calendar-table' className={styles.calendarTableContainer} role="presentation">
         <DaysHeading />
         <DatesOfMonth
           year={dateObject.year}

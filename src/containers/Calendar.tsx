@@ -66,11 +66,8 @@ const Calendar: React.FC = () => {
     }
     else if (event.key === "ArrowUp") {
       if ((document.getElementById(`button-${sliceChecker(currentElementId) - 7}`) as HTMLButtonElement) === null) {
-        if (eventTarget.parentElement?.parentElement?.previousElementSibling?.firstElementChild?.firstElementChild as HTMLButtonElement) {
-          (eventTarget.parentElement?.parentElement?.previousElementSibling?.firstElementChild?.firstElementChild as HTMLButtonElement).focus();
-          console.log(eventTarget.parentElement?.parentElement?.previousElementSibling?.firstElementChild?.firstElementChild);
-        } else {
-          return;
+        if (eventTarget.parentElement?.parentElement?.previousElementSibling as HTMLButtonElement) {
+          (document.getElementById("button-1") as HTMLButtonElement).focus();
         }
       } else {
         (document.getElementById(`button-${sliceChecker(currentElementId) - 7}`) as HTMLButtonElement).focus();

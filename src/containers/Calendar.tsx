@@ -73,7 +73,14 @@ const Calendar: React.FC = () => {
         (document.getElementById(`button-${sliceChecker(currentElementId) - 7}`) as HTMLButtonElement).focus();
       }
     }
-  }
+    else if (event.key === "Enter" || event.key === "Spacebar" || event.key === " ") {
+      eventTarget.click();
+    } else if (event.key === "Home") {
+      (document.getElementById("button-1") as HTMLButtonElement).focus();
+    } else if (event.key === "End") {
+      (document.getElementById(`button-${dateObject.dates}`) as HTMLButtonElement).focus();
+    }
+}
 
   return (
     <div className={styles.calendarContainer} role="application">

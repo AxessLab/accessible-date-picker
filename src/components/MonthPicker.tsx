@@ -16,7 +16,7 @@ interface MonthPickerProps {
 const monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 const MonthPicker: React.FC<MonthPickerProps> = (props) => {
-    const { month, year, setDateObject } = props
+    const { month, year, setDateObject } = props;
 
     type changeMonthParameter = "next" | "previous";
     const changeMonthHandler = (selection: changeMonthParameter) => {

@@ -29,7 +29,7 @@ const DatesOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
     const dayOfDate = (year: number, month: number, date: number) => {
         const day = moment(`${year}-${month + 1}-${date}`, "YYYY-MM-DD").format('dddd MMMM Do YYYY');
         return day;
-    }
+    };
 
     const blankCells: JSX.Element[] = [];
     for (let i = 0; i < firstDayOfMonth(); i++) {

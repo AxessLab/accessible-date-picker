@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+//import ReactDOM from "react-dom";
 import moment from "moment";
 import styles from "../styles/stylesCalendar.css";
 
 import MonthPicker from "../components/MonthPicker";
 import DaysHeading from "../components/DaysHeading";
 import DatesOfMonth from "../components/DatesOfMonth";
-import { keyDownHandler } from "../utility/functions"
+import { keyDownHandler } from "../utility/functions";
 
-const Calendar: React.FC = () => {
+interface CalendarProps {
+  applicationMode: boolean;
+}
+
+const Calendar: React.FC<CalendarProps> = (props) => {
+  const { applicationMode } = props
   const [clickedDate, setClickedDate] = useState({});
   const [dateObject, setDateObject] = useState({
     year: +moment().year(),
@@ -21,7 +26,7 @@ const Calendar: React.FC = () => {
       ...clickedDate,
       year: dateObject.year,
       month: dateObject.month + 1
-    })
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateObject]);
 
@@ -45,6 +50,5 @@ const Calendar: React.FC = () => {
 
 };
 
-ReactDOM.render(<Calendar />, document.getElementById("root"));
-
+//ReactDOM.render(<Calendar applicationMode={true} />, document.getElementById("root"));
 export default Calendar;

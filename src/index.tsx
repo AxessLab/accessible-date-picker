@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import Calendar from "./containers/Calendar";
 
 function App() {
-    return <Calendar />;
+    return <Calendar applicationMode={true} />;
 }
 
 const rootElement = document.getElementById("root");

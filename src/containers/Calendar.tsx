@@ -30,8 +30,10 @@ const Calendar: React.FC<CalendarProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateObject]);
 
+  console.log("Selected date is: ", clickedDate);
+
   return (
-    <div className={styles.calendarContainer} role="application">
+    <div className={styles.calendarContainer}>
       <MonthPicker
         month={dateObject.month}
         year={dateObject.year}

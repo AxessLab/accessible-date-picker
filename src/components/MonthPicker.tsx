@@ -53,9 +53,9 @@ const MonthPicker: React.FC<MonthPickerProps> = (props) => {
 
     return (
         <div>
-            <button className={`${styles.previousButton} ${styles.monthSelectionButtons}`} onClick={() => { changeMonthHandler("previous") }}>Previous</button>
+            <button className={`${styles.previousButton} ${styles.monthSelectionButtons}`} aria-label="previous month" onClick={() => { changeMonthHandler("previous") }}>Previous</button>
             <h2 id="month-label" aria-live="assertive">{monthArray[month]}{" "}{year}</h2>
-            <button className={`${styles.nextButton} ${styles.monthSelectionButtons}`} onClick={() => { changeMonthHandler("next") }}>Next</button>
+            <button className={`${styles.nextButton} ${styles.monthSelectionButtons}`} aria-label="next month" onClick={() => { changeMonthHandler("next") }}>Next</button>
         </div>
     );
 };

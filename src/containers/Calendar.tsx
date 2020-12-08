@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+import React, { useCallback, useEffect, useState } from "react";
+//import ReactDOM from "react-dom";
 import moment from "moment";
 import styles from "../styles/stylesCalendar.css";
 
 import MonthPicker from "../components/MonthPicker";
 import DaysHeading from "../components/DaysHeading";
 import DatesOfMonth from "../components/DatesOfMonth";
+import { keyDownHandler } from "../utility/functions";
 
-const Calendar: React.FC = () => {
+interface CalendarProps {
+  applicationMode?: boolean;
+}
+
+const Calendar: React.FC<CalendarProps> = (props) => {
+  const applicationMode = props.applicationMode ? true : false;
   const [clickedDate, setClickedDate] = useState({});
   const [dateObject, setDateObject] = useState({
     year: +moment().year(),
@@ -20,56 +26,36 @@ const Calendar: React.FC = () => {
       ...clickedDate,
       year: dateObject.year,
       month: dateObject.month + 1
-    })
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateObject]);
 
   console.log("Selected date is: ", clickedDate);
 
-  const keyDownHandler = (event: React.KeyboardEvent) => {
-    const eventTarget = event.target as HTMLElement
-    const currentElementId = eventTarget.id.slice(-2) as string;
-
-    const sliceChecker = (elementId: string): number => {
-      if (elementId[0] === "-") {
-        return +elementId.slice(-1)
-      } else {
-        return +elementId
-      }
+  const onKeyDown = useCallback((event) => { keyDownHandler(event, dateObject.dates) }, [dateObject.dates])
+  const applicationKeyHandler = (applicationMode: boolean) => {
+    if (applicationMode) {
+      window.addEventListener('keydown', onKeyDown);
     }
-
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      if ((document.getElementById(`button-${sliceChecker(currentElementId) - 1}`) as HTMLButtonElement) === null) {
-        return;
-      } else {
-        (document.getElementById(`button-${sliceChecker(currentElementId) - 1}`) as HTMLButtonElement).focus();
-      }
+    else {
+      window.removeEventListener('keydown', onKeyDown)
     }
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      if ((document.getElementById(`button-${sliceChecker(currentElementId) + 1}`) as HTMLButtonElement) === null) {
-        return;
-      } else {
-        (document.getElementById(`button-${sliceChecker(currentElementId) + 1}`) as HTMLButtonElement).focus();
-      }
-    }
-
   };
 
   return (
-    <div className={styles.calendarContainer} role="application">
+    <div className={styles.calendarContainer} {...(applicationMode ? { role: "application" } : {})}>
       <MonthPicker
         month={dateObject.month}
         year={dateObject.year}
         setDateObject={setDateObject} />
-      <table id='calendar-table' className={styles.calendarTableContainer} role="presentation" onKeyDown={keyDownHandler}>
+      <table id='calendar-table' className={styles.calendarTableContainer} role="presentation" onKeyDown={() => applicationKeyHandler(applicationMode)} >
         <DaysHeading />
         <DatesOfMonth
           year={dateObject.year}
           month={dateObject.month}
           datesOfMonth={dateObject.dates}
           setClickedDate={setClickedDate}
+          applicationMode={applicationMode}
         />
       </table>
     </div>
@@ -77,6 +63,5 @@ const Calendar: React.FC = () => {
 
 };
 
-ReactDOM.render(<Calendar />, document.getElementById("root"));
-
+//ReactDOM.render(<Calendar applicationMode={true} />, document.getElementById("root"));
 export default Calendar;

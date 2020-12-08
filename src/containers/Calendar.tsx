@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 //import ReactDOM from "react-dom";
 import moment from "moment";
 import styles from "../styles/stylesCalendar.css";
@@ -9,11 +9,11 @@ import DatesOfMonth from "../components/DatesOfMonth";
 import { keyDownHandler } from "../utility/functions";
 
 interface CalendarProps {
-  applicationMode: boolean;
+  applicationMode?: boolean;
 }
 
 const Calendar: React.FC<CalendarProps> = (props) => {
-  const { applicationMode } = props
+  const applicationMode = props.applicationMode ? true : false;
   const [clickedDate, setClickedDate] = useState({});
   const [dateObject, setDateObject] = useState({
     year: +moment().year(),
@@ -32,19 +32,30 @@ const Calendar: React.FC<CalendarProps> = (props) => {
 
   console.log("Selected date is: ", clickedDate);
 
+  const onKeyDown = useCallback((event) => { keyDownHandler(event, dateObject.dates) }, [dateObject.dates])
+  const applicationKeyHandler = (applicationMode: boolean) => {
+    if (applicationMode) {
+      window.addEventListener('keydown', onKeyDown);
+    }
+    else {
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  };
+
   return (
-    <div className={styles.calendarContainer}>
+    <div className={styles.calendarContainer} {...(applicationMode ? { role: "application" } : {})}>
       <MonthPicker
         month={dateObject.month}
         year={dateObject.year}
         setDateObject={setDateObject} />
-      <table id='calendar-table' className={styles.calendarTableContainer} role="presentation" onKeyDown={(event) => keyDownHandler(event, dateObject.dates)}>
+      <table id='calendar-table' className={styles.calendarTableContainer} role="presentation" onKeyDown={() => applicationKeyHandler(applicationMode)} >
         <DaysHeading />
         <DatesOfMonth
           year={dateObject.year}
           month={dateObject.month}
           datesOfMonth={dateObject.dates}
           setClickedDate={setClickedDate}
+          applicationMode={applicationMode}
         />
       </table>
     </div>

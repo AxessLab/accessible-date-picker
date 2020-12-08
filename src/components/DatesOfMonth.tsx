@@ -6,11 +6,12 @@ interface DaysOfMonthsProps {
     year: number;
     month: number;
     datesOfMonth: number;
+    applicationMode?: boolean;
     setClickedDate: ({ }) => void;
 }
 
 const DatesOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
-    const { year, month, datesOfMonth, setClickedDate } = props
+    const { year, month, datesOfMonth, applicationMode, setClickedDate } = props
     const [isClicked, setIsClicked] = useState({
         buttonId: "",
         selected: false
@@ -41,13 +42,13 @@ const DatesOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
     const datesInMonth: JSX.Element[] = [];
     for (let date = 1; date <= datesOfMonth; date++) {
         datesInMonth.push(
-            <td id={`tabledata-${date}`} key={date} role="presentation" tabIndex={-1}>
+            <td id={`tabledata-${date}`} key={date} role="presentation" tabIndex={applicationMode ? `tabledata-${date}` === "tabledata-1" ? 0 : -1 : -1}>
                 <button
                     id={`button-${date}`}
                     key={`button-${date}`}
                     className={`${styles.calendarCells} ${isClicked.buttonId === `button-${date}` && isClicked.selected ? styles.clickedDateButton : ""}`}
                     onClick={() => clickedDateHandler(year, month, date, `button-${date}`)}
-                    tabIndex={0}
+                    tabIndex={applicationMode ? isClicked.buttonId === `button-${date}` && isClicked.selected ? 0 : -1 : 0}
                     aria-label={`${isClicked.buttonId === `button-${date}` && isClicked.selected ? "Selected date." : ""} ${dayOfDate(year, month, date)}`}
                     aria-pressed={isClicked.buttonId === `button-${date}` && isClicked.selected ? true : false}
                 >

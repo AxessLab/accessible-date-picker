@@ -69,5 +69,9 @@ export const keyDownHandler = (event: React.KeyboardEvent, dateObjectDates: numb
         case "End":
             (document.getElementById(`button-${dateObjectDates}`) as HTMLButtonElement).focus();
             break;
+
+        case "Escape":
+            //do something after selection or close the calendar
+            break;
     }
 }

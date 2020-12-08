@@ -70,6 +70,14 @@ export const keyDownHandler = (event: React.KeyboardEvent, dateObjectDates: numb
             (document.getElementById(`button-${dateObjectDates}`) as HTMLButtonElement).focus();
             break;
 
+        case "PageUp":
+            (document.getElementById("button-previous") as HTMLButtonElement).focus();
+            break;
+
+        case "PageDown":
+            (document.getElementById("button-next") as HTMLButtonElement).focus();
+            break;
+
         case "Escape":
             //do something after selection or close the calendar
             break;

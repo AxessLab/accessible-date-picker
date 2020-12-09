@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 //import ReactDOM from "react-dom";
 import moment from "moment";
-import styles from "../styles/stylesCalendar.css";
+import styles from "../styles/stylesDatePicker.css";
 
 import MonthPicker from "../components/MonthPicker";
 import DaysHeading from "../components/DaysHeading";

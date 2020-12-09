@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import moment from 'moment';
-import styles from "../styles/stylesCalendar.css";
+import styles from "../styles/stylesDatePicker.css";
 
 interface DaysOfMonthsProps {
     year: number;

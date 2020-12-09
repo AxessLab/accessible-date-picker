@@ -1,35 +1,33 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import styles from "./styles/stylesDatePicker.css";
 import DatePicker from "./containers/DatePicker";
 
 function App() {
     // const json = { name: sting, birth: string }
+    const styleLabel = {
+        padding: "8px",
+        margin: "4px"
+    }
+
     return (
         <>
-            <h1>Accessible Date Picker</h1>
-            <form>
-                <fieldset>
-                    <label>
-                        <label htmlFor="name">Name</label>
-                        <input type="text" name="name"></input><br />
-                        <label htmlFor="age">Age</label>
-                        <input type="number" name="age"></input><br />
-                        <label htmlFor="birthday">Birthdate</label>
-                        <input type="date" name="datepicker"></input><br />
-                    </label>
-                </fieldset>
-                <button type="submit">Submit!</button>
+            <h1 style={styleLabel}>Accessible Date Picker</h1>
+            <form >
+                <label style={styleLabel} htmlFor="name">Name:</label> <br />
+                <input className={styles.inputField} type="text" name="name"></input><br />
+                <label style={styleLabel} htmlFor="age">Age:</label><br />
+                <input className={styles.inputField} type="number" name="age"></input><br />
+                <label style={styleLabel} htmlFor="birthday">Birthdate:</label><br />
+                <DatePicker />
             </form>
-            <DatePicker />
         </>
     );
 }
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
-
-
 
 // how do I connect it -check Material UI
 // create input for a date-picker

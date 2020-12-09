@@ -5,6 +5,10 @@ declare namespace StylesDatePickerCssNamespace {
     calendarTableContainer: string;
     clickedDateButton: string;
     disabled: string;
+    hidden: string;
+    icon: string;
+    inputField: string;
+    inputIcons: string;
     monthSelectionButtons: string;
     nextButton: string;
     previousButton: string;

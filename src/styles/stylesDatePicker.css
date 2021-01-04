@@ -28,21 +28,14 @@ h2 {
   color: var(--secondary);
 }
 
-/* CSS for the Icon */
-.inputIcons i { 
-  position: absolute; 
-} 
-
-.inputIcons { 
-  width: 40%; 
-  margin-bottom: 10px; 
-} 
-
-.icon { 
-  padding: 10px; 
+/* CSS for the inpu tfield */
+.iconButton { 
+  background: none;
+  position: absolute;
+  padding: 8px; 
+  border: none;
   color: var(--secondary);
-  min-width: 52px; 
-  text-align: left; 
+  text-align: center; 
 } 
 
 .inputField { 
@@ -56,6 +49,7 @@ h2 {
 .calendarContainer {
   background-color: var(--main);
   display: inline-block;
+  position: absolute;
   text-align: center;
   box-shadow: 0px 1px 9px 3px rgba(133, 130, 133, 1);
   -webkit-box-shadow: 0px 1px 9px 3px rgba(133, 130, 133, 1);

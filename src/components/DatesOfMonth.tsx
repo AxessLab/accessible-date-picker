@@ -8,10 +8,11 @@ interface DaysOfMonthsProps {
     datesOfMonth: number;
     applicationMode?: boolean;
     setClickedDate: ({ }) => void;
+    showCalendarHandler: () => void;
 }
 
 const DatesOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
-    const { year, month, datesOfMonth, applicationMode, setClickedDate } = props
+    const { year, month, datesOfMonth, applicationMode, setClickedDate, showCalendarHandler } = props
     const [isClicked, setIsClicked] = useState({
         buttonId: "",
         selected: false
@@ -20,6 +21,7 @@ const DatesOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
     const clickedDateHandler = (year: number, month: number, date: number, buttonId: string) => {
         setClickedDate({ year: year, month: month + 1, date: date });
         setIsClicked({ buttonId: buttonId, selected: true });
+        showCalendarHandler();
     };
 
     const firstDayOfMonth = () => {

@@ -1,26 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
 import styles from "./styles/stylesDatePicker.css";
 import DatePicker from "./containers/DatePicker";
 
 function App() {
-    // const json = { name: sting, birth: string }
+
     const styleLabel = {
         padding: "8px",
         margin: "4px"
-    }
+    };
+
+    const [nameData, setNameData] = useState('');
+    const [datePickerFormValue, setDatePickerFormValue] = useState('');
+
+    const preventDefault = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+    };
+
+    const handleNameData = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setNameData(event.target.value);
+    };
+
+    const submitForm = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        alert(`This info has been submitted: ${nameData}, ${datePickerFormValue}`)
+    };
 
     return (
         <>
-            <h1 style={styleLabel}>Accessible Date Picker</h1>
-            <form >
+            <form aria-labelledby="form-example" onSubmit={e => preventDefault(e)} method="post">
+                <h1 style={styleLabel}>Accessible Date Picker</h1>
                 <label style={styleLabel} htmlFor="name">Name:</label> <br />
-                <input className={styles.inputField} type="text" name="name"></input><br />
-                <label style={styleLabel} htmlFor="age">Age:</label><br />
-                <input className={styles.inputField} type="number" name="age"></input><br />
-                <label style={styleLabel} htmlFor="birthday">Birthdate:</label><br />
-                <DatePicker />
+                <input className={styles.inputField} type="text" name="name" aria-label="name input" onChange={(e) => handleNameData(e)}></input><br />
+                <label style={styleLabel} htmlFor="date">Date:</label><br />
+                <DatePicker datePickerFormValue={datePickerFormValue} setDatePickerFormValue={setDatePickerFormValue} />
+                <button type="submit" value="Submit" onClick={(e) => submitForm(e)}>Submit</button>
             </form>
         </>
     );

@@ -8,24 +8,30 @@ import DaysHeading from "../components/DaysHeading";
 import DatesOfMonth from "../components/DatesOfMonth";
 import { keyDownHandler } from "../utility/functions";
 
-interface CalendarProps {
+interface ICalendarProps {
   applicationMode?: boolean;
   datePickerFormValue: string;
   setDatePickerFormValue: (value: string) => void;
 }
 
-interface ClickedDate {
-  year?: number | null;
-  month?: number | null;
-  date?: number | null
+interface IClickedDate {
+  year?: number;
+  month?: number;
+  date?: number;
+} 
+
+interface IDateObject {
+  year: number;
+  month: number;
+  dates: number;
 }
 
-const Calendar: React.FC<CalendarProps> = (props) => {
+const Calendar: React.FC<ICalendarProps> = (props) => {
   const { datePickerFormValue, setDatePickerFormValue } = props
   const applicationMode = props.applicationMode ? true : false;
   const [showCalendar, setShowCalendar] = useState(false);
-  const [clickedDate, setClickedDate] = useState<ClickedDate>({});
-  const [dateObject, setDateObject] = useState({
+  const [clickedDate, setClickedDate] = useState<IClickedDate>({});
+  const [dateObject, setDateObject] = useState<IDateObject>({
     year: +moment().year(),
     month: +moment().month(),
     dates: +moment().daysInMonth(),
@@ -34,8 +40,8 @@ const Calendar: React.FC<CalendarProps> = (props) => {
   useEffect(() => {
     setClickedDate({
       ...clickedDate,
-      year: dateObject.year,
-      month: dateObject.month + 1
+      year: +dateObject.year,
+      month: +dateObject.month + 1
     });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -51,6 +57,7 @@ const Calendar: React.FC<CalendarProps> = (props) => {
     };
 
     dateInputValueHandler();
+    console.log("clicked date is:", clickedDate)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clickedDate]);
 
@@ -59,7 +66,22 @@ const Calendar: React.FC<CalendarProps> = (props) => {
   };
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDatePickerFormValue(event.target.value);
+    const targetValue = event.target.value;
+    setDatePickerFormValue(targetValue);
+
+    if (targetValue.length === 10) {
+      const month = targetValue.charAt(0) + targetValue.charAt(1);
+      const date = targetValue.charAt(3) + targetValue.charAt(4);
+      const year = targetValue.charAt(6) + targetValue.charAt(7) + targetValue.charAt(8) + targetValue.charAt(9);
+
+      setClickedDate({
+        date: +date,
+        year: +year,
+        month: +month
+      })
+      console.log("clicked date is:", clickedDate);
+    }
+
   };
 
   const onKeyDown = useCallback((event) => { keyDownHandler(event, dateObject.dates) }, [dateObject.dates]);
@@ -72,6 +94,7 @@ const Calendar: React.FC<CalendarProps> = (props) => {
     }
   };
 
+  console.log("the clicked", clickedDate);
   return (
     <>
       <div>
@@ -80,8 +103,8 @@ const Calendar: React.FC<CalendarProps> = (props) => {
       </div>
       <div className={showCalendar ? styles.calendarContainer : styles.hidden} {...(applicationMode ? { role: "application" } : {})}>
         <MonthPicker
-          month={dateObject.month}
-          year={dateObject.year}
+          currentDate={dateObject}
+          clickedDate={clickedDate}
           setDateObject={setDateObject} />
         <table id='calendar-table' className={styles.calendarTableContainer} role="presentation" onKeyDown={() => applicationKeyHandler(applicationMode)} >
           <DaysHeading />

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import moment from 'moment';
 import styles from "../styles/stylesDatePicker.css";
 
-interface DaysOfMonthsProps {
+interface IDaysOfMonthsProps {
     year: number;
     month: number;
     datesOfMonth: number;
@@ -11,7 +11,7 @@ interface DaysOfMonthsProps {
     showCalendarHandler: () => void;
 }
 
-const DatesOfMonth: React.FC<DaysOfMonthsProps> = (props) => {
+const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => {
     const { year, month, datesOfMonth, applicationMode, setClickedDate, showCalendarHandler } = props
     const [isClicked, setIsClicked] = useState({
         buttonId: "",

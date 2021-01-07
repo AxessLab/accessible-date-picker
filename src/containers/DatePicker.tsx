@@ -15,15 +15,20 @@ interface ICalendarProps {
 }
 
 interface IClickedDate {
-  year?: number;
-  month?: number;
   date?: number;
-} 
+  month?: number;
+  year?: number;
+}
 
 interface IDateObject {
   year: number;
   month: number;
   dates: number;
+}
+
+interface IIsClicked {
+  buttonId: string,
+  selected: boolean
 }
 
 const Calendar: React.FC<ICalendarProps> = (props) => {
@@ -36,6 +41,10 @@ const Calendar: React.FC<ICalendarProps> = (props) => {
     month: +moment().month(),
     dates: +moment().daysInMonth(),
   });
+  const [isClicked, setIsClicked] = useState<IIsClicked>({
+    buttonId: "",
+    selected: false
+  });
 
   useEffect(() => {
     setClickedDate({
@@ -43,7 +52,6 @@ const Calendar: React.FC<ICalendarProps> = (props) => {
       year: +dateObject.year,
       month: +dateObject.month + 1
     });
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateObject]);
 
@@ -55,9 +63,7 @@ const Calendar: React.FC<ICalendarProps> = (props) => {
         setDatePickerFormValue(selectedFormDateValue);
       }
     };
-
     dateInputValueHandler();
-    console.log("clicked date is:", clickedDate)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clickedDate]);
 
@@ -66,20 +72,16 @@ const Calendar: React.FC<ICalendarProps> = (props) => {
   };
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const targetValue = event.target.value;
-    setDatePickerFormValue(targetValue);
+    const value = event.target.value;
+    setDatePickerFormValue(value);
 
-    if (targetValue.length === 10) {
-      const month = targetValue.charAt(0) + targetValue.charAt(1);
-      const date = targetValue.charAt(3) + targetValue.charAt(4);
-      const year = targetValue.charAt(6) + targetValue.charAt(7) + targetValue.charAt(8) + targetValue.charAt(9);
+    if (value.length === 10) {
+      const month = value.charAt(0) + value.charAt(1);
+      const date = value.charAt(3) + value.charAt(4);
+      const year = value.charAt(6) + value.charAt(7) + value.charAt(8) + value.charAt(9);
 
-      setClickedDate({
-        date: +date,
-        year: +year,
-        month: +month
-      })
-      console.log("clicked date is:", clickedDate);
+      setClickedDate({ year: +year, month: +month, date: +date });
+      setIsClicked({ buttonId: +date < 10 ? `button-${value.charAt(4)}` : `button-${date}`, selected: true });
     }
 
   };
@@ -94,7 +96,6 @@ const Calendar: React.FC<ICalendarProps> = (props) => {
     }
   };
 
-  console.log("the clicked", clickedDate);
   return (
     <>
       <div>
@@ -115,12 +116,13 @@ const Calendar: React.FC<ICalendarProps> = (props) => {
             datesOfMonth={dateObject.dates}
             setClickedDate={setClickedDate}
             showCalendarHandler={showCalendarHandler}
+            isClicked={isClicked}
+            setIsClicked={setIsClicked}
           />
         </table>
       </div>
     </>
   );
-
 };
 
 export default Calendar;

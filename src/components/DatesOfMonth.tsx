@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import moment from 'moment';
 import styles from "../styles/stylesDatePicker.css";
+
+interface IIsClicked {
+    buttonId: string,
+    selected: boolean
+}
 
 interface IDaysOfMonthsProps {
     year: number;
@@ -9,14 +14,16 @@ interface IDaysOfMonthsProps {
     applicationMode?: boolean;
     setClickedDate: ({ }) => void;
     showCalendarHandler: () => void;
+    isClicked: {
+        buttonId: string,
+        selected: boolean
+    };
+    setIsClicked: (object: IIsClicked) => void
 }
 
 const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => {
-    const { year, month, datesOfMonth, applicationMode, setClickedDate, showCalendarHandler } = props
-    const [isClicked, setIsClicked] = useState({
-        buttonId: "",
-        selected: false
-    });
+    const { year, month, datesOfMonth, applicationMode, setClickedDate, showCalendarHandler, isClicked, setIsClicked } = props
+
 
     const clickedDateHandler = (year: number, month: number, date: number, buttonId: string) => {
         setClickedDate({ year: year, month: month + 1, date: date });

@@ -44,9 +44,11 @@ function App() {
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 
+// work outside to inside
 // how do I connect it -check Material UI
 // create input for a date-picker
-// to be able to open a modal => and fill that up
-// work outside to inside
+// making sure the typed date is what is selected on calendar
+// click to be able to open a modal => and fill that up
+
 // add different configurations
-// add labels to the bottom to show value
+// add labels to the bottom to show value => for show purposes?

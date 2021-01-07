@@ -99,8 +99,8 @@ const Calendar: React.FC<ICalendarProps> = (props) => {
   return (
     <>
       <div>
-        <button className={styles.iconButton} aria-label="click for calendar" type="button" onClick={showCalendarHandler}><CalendarIcon /></button>
-        <input className={styles.inputField} id="date-picker-input" type="text" aria-label="date input" placeholder='MM/DD/YYYY' autoComplete="off" value={datePickerFormValue} onChange={(e) => onChangeHandler(e)} />
+        <button className={styles.iconButton} aria-label="click to toggle calendar" type="button" onClick={showCalendarHandler}><CalendarIcon /></button>
+        <input className={styles.inputField} id="date-picker-input" type="text" aria-label={datePickerFormValue.length > 1 ? "entered date value" : "enter date in following format"} placeholder='MM/DD/YYYY' autoComplete="off" value={datePickerFormValue} onChange={(e) => onChangeHandler(e)} />
       </div>
       <div className={showCalendar ? styles.calendarContainer : styles.hidden} {...(applicationMode ? { role: "application" } : {})}>
         <MonthPicker

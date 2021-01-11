@@ -31,18 +31,18 @@ const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => {
         showCalendarHandler();
     };
 
-    const firstDayOfMonth = () => {
+    const findFirstDayOfMonth = () => {
         const firstDay = moment().year(year).month(month).startOf("month").format("d");
         return +firstDay;
     };
 
-    const dayOfDate = (year: number, month: number, date: number) => {
+    const ariaLabelFormatter = (year: number, month: number, date: number) => {
         const day = moment(`${year}-${month + 1}-${date}`, "YYYY-MM-DD").format('dddd MMMM Do YYYY');
         return day;
     };
 
     const blankCells: JSX.Element[] = [];
-    for (let i = 0; i < firstDayOfMonth(); i++) {
+    for (let i = 0; i < findFirstDayOfMonth(); i++) {
         blankCells.push(
             <td role="presentation" className={styles.disabled}></td>
         );
@@ -58,7 +58,7 @@ const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => {
                     className={`${styles.calendarCells} ${isClicked.buttonId === `button-${date}` && isClicked.selected ? styles.clickedDateButton : ""}`}
                     onClick={() => clickedDateHandler(year, month, date, `button-${date}`)}
                     tabIndex={applicationMode ? isClicked.buttonId === `button-${date}` && isClicked.selected ? 0 : -1 : 0}
-                    aria-label={`${isClicked.buttonId === `button-${date}` && isClicked.selected ? "Selected date." : ""} ${dayOfDate(year, month, date)}`}
+                    aria-label={`${isClicked.buttonId === `button-${date}` && isClicked.selected ? "Selected date." : ""} ${ariaLabelFormatter(year, month, date)}`}
                     aria-pressed={isClicked.buttonId === `button-${date}` && isClicked.selected ? true : false}
                 >
                     {date}

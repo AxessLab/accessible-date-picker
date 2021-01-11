@@ -8,7 +8,7 @@ import DaysHeading from "../components/DaysHeading";
 import DatesOfMonth from "../components/DatesOfMonth";
 import { keyDownHandler } from "../utility/functions";
 
-interface ICalendarProps {
+interface IDatePickerProps {
   applicationMode?: boolean;
   datePickerFormValue: string;
   setDatePickerFormValue: (value: string) => void;
@@ -31,7 +31,7 @@ interface IIsClicked {
   selected: boolean
 }
 
-const Calendar: React.FC<ICalendarProps> = (props) => {
+const Calendar: React.FC<IDatePickerProps> = (props) => {
   const { datePickerFormValue, setDatePickerFormValue } = props
   const applicationMode = props.applicationMode ? true : false;
   const [showCalendar, setShowCalendar] = useState(false);

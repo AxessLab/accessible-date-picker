@@ -44,6 +44,8 @@ function App() {
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 
+//questions for Joel: How did MUI manage to keep state inside?
+
 // work outside to inside
 // how do I connect it -check Material UI
 // create input for a date-picker
@@ -51,4 +53,5 @@ ReactDOM.render(<App />, rootElement);
 // click to be able to open a modal => and fill that up
 
 // add different configurations
+// add tests
 // add labels to the bottom to show value => for show purposes?

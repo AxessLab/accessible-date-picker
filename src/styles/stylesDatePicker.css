@@ -28,7 +28,7 @@ h2 {
   color: var(--secondary);
 }
 
-/* CSS for the inpu tfield */
+/* CSS for the input field */
 .iconButton { 
   background: none;
   position: absolute;
@@ -45,7 +45,7 @@ h2 {
 } 
 
 
-/* CSS for the Calendar table and the elements within */
+/* CSS for the calendar table and the elements within */
 .calendarContainer {
   background-color: var(--main);
   display: inline-block;

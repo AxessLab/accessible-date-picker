@@ -29,6 +29,11 @@ h2 {
 }
 
 /* CSS for the input field */
+.label {
+  font-style: italic;
+  font-size: smaller;
+}
+
 .iconButton { 
   background: none;
   position: absolute;

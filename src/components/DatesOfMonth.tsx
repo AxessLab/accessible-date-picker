@@ -14,10 +14,7 @@ interface IDaysOfMonthsProps {
     applicationMode?: boolean;
     setClickedDate: ({ }) => void;
     showCalendarHandler: () => void;
-    isClicked: {
-        buttonId: string,
-        selected: boolean
-    };
+    isClicked: IIsClicked;
     setIsClicked: (object: IIsClicked) => void
 }
 

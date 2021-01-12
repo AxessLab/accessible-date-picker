@@ -8,6 +8,7 @@ declare namespace StylesDatePickerCssNamespace {
     hidden: string;
     iconButton: string;
     inputField: string;
+    label: string;
     monthSelectionButtons: string;
     nextButton: string;
     previousButton: string;

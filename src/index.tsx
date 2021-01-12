@@ -29,7 +29,7 @@ function App() {
                 <label htmlFor="name">Name:</label> <br />
                 <input className={styles.inputField} type="text" name="name" aria-label="name input" onChange={(e) => handleNameData(e)}></input><br />
                 <label htmlFor="date">Date:</label><br />
-                <DatePicker value={value} setValue={setValue} />
+                <DatePicker value={value} setValue={setValue} dateFormat="YYYY/MM/DD" />
                 <button type="submit" value="Submit" onClick={(e) => submitForm(e)}>Submit</button>
             </form>
         </>
@@ -39,7 +39,6 @@ function App() {
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 
-// ask about esc on modal
 // attribute of the date format -> placeholder
 // placeholder should be disabled attribute 
 

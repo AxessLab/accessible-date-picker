@@ -8,10 +8,12 @@ import DaysHeading from "../components/DaysHeading";
 import DatesOfMonth from "../components/DatesOfMonth";
 import { keyDownHandler } from "../utility/functions";
 
+type DateFormat = "YYYY/MM/DD" | "DD/MM/YYYY" | "MM/DD/YYYY";
 interface IDatePickerProps {
   applicationMode?: boolean;
   value: string;
   setValue: (value: string) => void;
+  dateFormat: DateFormat;
 }
 
 interface IClickedDate {
@@ -32,7 +34,7 @@ interface IIsClicked {
 }
 
 const Calendar: React.FC<IDatePickerProps> = (props) => {
-  const { value, setValue } = props
+  const { value, setValue, dateFormat } = props
   const applicationMode = props.applicationMode ? true : false;
   const [showCalendar, setShowCalendar] = useState(false);
   const [clickedDate, setClickedDate] = useState<IClickedDate>({});
@@ -58,7 +60,7 @@ const Calendar: React.FC<IDatePickerProps> = (props) => {
   useEffect(() => {
     const dateInputValueHandler = () => {
       if (clickedDate.date) {
-        const selectedFormDateValue = moment(`${clickedDate.year}-${clickedDate.month}-${clickedDate.date}`, "YYYY-MM-DD").format('MM/DD/YYYY');
+        const selectedFormDateValue = moment(`${clickedDate.year}-${clickedDate.month}-${clickedDate.date}`, "YYYY-MM-DD").format(dateFormat);
 
         setValue(selectedFormDateValue);
       }
@@ -77,19 +79,32 @@ const Calendar: React.FC<IDatePickerProps> = (props) => {
     }
   };
 
-  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>, dateFormat: string) => {
     const value = event.target.value;
     setValue(value);
+    let date = "";
+    let month = "";
+    let year = "";
 
     if (value.length === 10) {
-      const month = value.charAt(0) + value.charAt(1);
-      const date = value.charAt(3) + value.charAt(4);
-      const year = value.charAt(6) + value.charAt(7) + value.charAt(8) + value.charAt(9);
-
+      if (dateFormat === "YYYY/MM/DD") {
+        date = value.charAt(8) + value.charAt(9);
+        month = value.charAt(5) + value.charAt(6);
+        year = value.charAt(0) + value.charAt(1) + value.charAt(2) + value.charAt(3);
+      }
+      if (dateFormat === "DD/MM/YYYY") {
+        date = value.charAt(0) + value.charAt(1);
+        month = value.charAt(3) + value.charAt(4);
+        year = value.charAt(6) + value.charAt(7) + value.charAt(8) + value.charAt(9);
+      }
+      if (dateFormat === "MM/DD/YYYY") {
+        month = value.charAt(0) + value.charAt(1);
+        date = value.charAt(3) + value.charAt(4);
+        year = value.charAt(6) + value.charAt(7) + value.charAt(8) + value.charAt(9);
+      }
       setClickedDate({ year: +year, month: +month, date: +date });
-      setIsClicked({ buttonId: +date < 10 ? `button-${value.charAt(4)}` : `button-${date}`, selected: true });
+      setIsClicked({ buttonId: +date < 10 ? `button-${date.charAt(1)}` : `button-${date}`, selected: true });
     }
-
   };
 
   const onKeyDown = useCallback((event) => { keyDownHandler(event, dateObject.dates) }, [dateObject.dates]);
@@ -105,8 +120,9 @@ const Calendar: React.FC<IDatePickerProps> = (props) => {
   return (
     <>
       <div onKeyDown={(e) => escCalendar(e)}>
+        <label htmlFor="date-picker-input" className={styles.label}>{dateFormat}</label><br />
         <button className={styles.iconButton} aria-label="click to toggle calendar" type="button" onClick={showCalendarHandler}><CalendarIcon /></button>
-        <input className={styles.inputField} id="date-picker-input" type="text" aria-label={value.length > 1 ? "entered date value" : "enter date in following format"} autoComplete="off" value={value} onChange={(e) => onChangeHandler(e)} />
+        <input className={styles.inputField} id="date-picker-input" name="date-picker-input" type="text" aria-label={value.length > 1 ? "entered date value" : "enter date in following format"} autoComplete="off" value={value} onChange={(e) => onChangeHandler(e, dateFormat)} />
       </div>
       <div className={showCalendar ? styles.calendarContainer : styles.hidden} {...(applicationMode ? { role: "application" } : {})}>
         <MonthPicker

@@ -1,6 +1,6 @@
 export const keyDownHandler = (event: React.KeyboardEvent, dateObjectDates: number): void => {
     event.preventDefault();
-    const eventTarget = event.target as HTMLElement
+    const eventTarget = event.target as HTMLElement;
     const currentElementId = eventTarget.id.slice(-2) as string;
 
     const sliceChecker = (elementId: string): number => {
@@ -76,10 +76,6 @@ export const keyDownHandler = (event: React.KeyboardEvent, dateObjectDates: numb
 
         case "PageDown":
             (document.getElementById("button-next") as HTMLButtonElement).focus();
-            break;
-
-        case "Escape":
-            //do something after selection or close the calendar
             break;
     }
 }

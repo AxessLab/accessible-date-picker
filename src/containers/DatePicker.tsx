@@ -10,8 +10,8 @@ import { keyDownHandler } from "../utility/functions";
 
 interface IDatePickerProps {
   applicationMode?: boolean;
-  datePickerFormValue: string;
-  setDatePickerFormValue: (value: string) => void;
+  value: string;
+  setValue: (value: string) => void;
 }
 
 interface IClickedDate {
@@ -32,7 +32,7 @@ interface IIsClicked {
 }
 
 const Calendar: React.FC<IDatePickerProps> = (props) => {
-  const { datePickerFormValue, setDatePickerFormValue } = props
+  const { value, setValue } = props
   const applicationMode = props.applicationMode ? true : false;
   const [showCalendar, setShowCalendar] = useState(false);
   const [clickedDate, setClickedDate] = useState<IClickedDate>({});
@@ -60,7 +60,7 @@ const Calendar: React.FC<IDatePickerProps> = (props) => {
       if (clickedDate.date) {
         const selectedFormDateValue = moment(`${clickedDate.year}-${clickedDate.month}-${clickedDate.date}`, "YYYY-MM-DD").format('MM/DD/YYYY');
 
-        setDatePickerFormValue(selectedFormDateValue);
+        setValue(selectedFormDateValue);
       }
     };
     dateInputValueHandler();
@@ -71,9 +71,15 @@ const Calendar: React.FC<IDatePickerProps> = (props) => {
     setShowCalendar(!showCalendar);
   };
 
+  const escCalendar = (event: React.KeyboardEvent) => {
+    if (event.key === "Escape") {
+      setShowCalendar(false);
+    }
+  };
+
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    setDatePickerFormValue(value);
+    setValue(value);
 
     if (value.length === 10) {
       const month = value.charAt(0) + value.charAt(1);
@@ -98,9 +104,9 @@ const Calendar: React.FC<IDatePickerProps> = (props) => {
 
   return (
     <>
-      <div>
+      <div onKeyDown={(e) => escCalendar(e)}>
         <button className={styles.iconButton} aria-label="click to toggle calendar" type="button" onClick={showCalendarHandler}><CalendarIcon /></button>
-        <input className={styles.inputField} id="date-picker-input" type="text" aria-label={datePickerFormValue.length > 1 ? "entered date value" : "enter date in following format"} placeholder='MM/DD/YYYY' autoComplete="off" value={datePickerFormValue} onChange={(e) => onChangeHandler(e)} />
+        <input className={styles.inputField} id="date-picker-input" type="text" aria-label={value.length > 1 ? "entered date value" : "enter date in following format"} autoComplete="off" value={value} onChange={(e) => onChangeHandler(e)} />
       </div>
       <div className={showCalendar ? styles.calendarContainer : styles.hidden} {...(applicationMode ? { role: "application" } : {})}>
         <MonthPicker

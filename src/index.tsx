@@ -38,9 +38,3 @@ function App() {
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
-
-// attribute of the date format -> placeholder
-// placeholder should be disabled attribute 
-
-
-// add tests

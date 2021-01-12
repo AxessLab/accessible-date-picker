@@ -27,7 +27,7 @@ function App() {
             <form aria-labelledby="form-example" onSubmit={e => preventDefault(e)} method="post">
                 <h1>Accessible Date Picker</h1>
                 <label htmlFor="name">Name:</label> <br />
-                <input className={styles.inputField} type="text" name="name" aria-label="name input" onChange={(e) => handleNameData(e)}></input><br />
+                <input className={styles.inputField} type="text" name="name" aria-label="name input" autoComplete="off" onChange={(e) => handleNameData(e)}></input><br />
                 <label htmlFor="date">Date:</label><br />
                 <DatePicker value={value} setValue={setValue} dateFormat="YYYY/MM/DD" />
                 <button type="submit" value="Submit" onClick={(e) => submitForm(e)}>Submit</button>

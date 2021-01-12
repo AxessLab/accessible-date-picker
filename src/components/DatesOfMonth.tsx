@@ -55,7 +55,7 @@ const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => {
                     className={`${styles.calendarCells} ${isClicked.buttonId === `button-${date}` && isClicked.selected ? styles.clickedDateButton : ""}`}
                     onClick={() => clickedDateHandler(year, month, date, `button-${date}`)}
                     tabIndex={applicationMode ? isClicked.buttonId === `button-${date}` && isClicked.selected ? 0 : -1 : 0}
-                    aria-label={`${isClicked.buttonId === `button-${date}` && isClicked.selected ? "Selected date." : ""} ${ariaLabelFormatter(year, month, date)}`}
+                    aria-label={`${isClicked.buttonId === `button-${date}` && isClicked.selected ? "Selected date" : ""} ${ariaLabelFormatter(year, month, date)}`}
                     aria-pressed={isClicked.buttonId === `button-${date}` && isClicked.selected ? true : false}
                 >
                     {date}

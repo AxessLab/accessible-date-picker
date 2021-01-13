@@ -104,7 +104,7 @@ const Calendar: React.FC<IDatePickerProps> = (props) => {
       }
       setClickedDate({ year: +year, month: +month, date: +date });
       setIsClicked({ buttonId: +date < 10 ? `button-${date.charAt(1)}` : `button-${date}`, selected: true });
-    }
+    } 
   };
 
   const onKeyDown = useCallback((event) => { keyDownHandler(event, dateObject.dates) }, [dateObject.dates]);
@@ -122,7 +122,7 @@ const Calendar: React.FC<IDatePickerProps> = (props) => {
       <div onKeyDown={(e) => escCalendar(e)}>
         <label htmlFor="date-picker-input" className={styles.label} aria-label="enter date in the following format">{dateFormat}</label><br />
         <button className={styles.iconButton} aria-label={showCalendar ? "select to close calendar" : "select to open calendar"} type="button" onClick={showCalendarHandler}><CalendarIcon /></button>
-        <input className={styles.inputField} id="date-picker-input" name="date-picker-input" type="text" aria-label={value.length > 1 ? "entered date value is" : "enter date"} autoComplete="off" value={value} onChange={(e) => onChangeHandler(e, dateFormat)} />
+        <input className={styles.inputField} id="date-picker-input" type="text" aria-label={value.length > 1 ? "entered date value is" : `enter date in format ${dateFormat}`} autoComplete="off" value={value} onChange={(e) => onChangeHandler(e, dateFormat)} />
       </div>
       <div className={showCalendar ? styles.calendarContainer : styles.hidden} {...(applicationMode ? { role: "application" } : {})} >
         <MonthPicker

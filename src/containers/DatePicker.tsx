@@ -33,7 +33,7 @@ interface IIsClicked {
   selected: boolean
 }
 
-const Calendar: React.FC<IDatePickerProps> = (props) => {
+const DatePicker: React.FC<IDatePickerProps> = (props) => {
   const { value, setValue, dateFormat } = props
   const applicationMode = props.applicationMode ? true : false;
   const [showCalendar, setShowCalendar] = useState(false);
@@ -147,4 +147,4 @@ const Calendar: React.FC<IDatePickerProps> = (props) => {
   );
 };
 
-export default Calendar;
+export default DatePicker;

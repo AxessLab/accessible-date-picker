@@ -41,7 +41,7 @@ const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => {
     const blankCells: JSX.Element[] = [];
     for (let i = 0; i < findFirstDayOfMonth(); i++) {
         blankCells.push(
-            <td role="presentation" className={styles.disabled}></td>
+            <td key={i} role="presentation" className={styles.disabled}></td>
         );
     }
 
@@ -51,7 +51,7 @@ const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => {
             <td id={`tabledata-${date}`} key={date} role="presentation" tabIndex={applicationMode ? `tabledata-${date}` === "tabledata-1" ? 0 : -1 : -1}>
                 <button
                     id={`button-${date}`}
-                    key={`button-${date}`}
+                    key={`button-${year}-${month + 1}-${date}`}
                     className={`${styles.calendarCells} ${isClicked.buttonId === `button-${date}` && isClicked.selected ? styles.clickedDateButton : ""}`}
                     onClick={() => clickedDateHandler(year, month, date, `button-${date}`)}
                     tabIndex={applicationMode ? isClicked.buttonId === `button-${date}` && isClicked.selected ? 0 : -1 : 0}
@@ -78,13 +78,14 @@ const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => {
         }
         if (i === totalDateElementsOfCalendar.length - 1) { // when loop ends, add the remaining dates
             calendarRows.push(calendarSlots);
+            calendarRows.shift();
         }
     });
 
     return (
-        <tbody role='presentation'>
+        <tbody role="presentation">
             { calendarRows.map((date, i) =>
-                (<tr key={i} role="presentation"> {date} </tr>))
+                (<tr key={`${year}-${month}-${i}`} role="presentation"> {date} </tr>))
             }
         </tbody>)
 };

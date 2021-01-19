@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`datePicker changes input state value 1`] = `
+<Fragment>
+  <div
+    onKeyDown={[Function]}
+  >
+    <label
+      aria-label="enter date in the following format"
+      className="label"
+      htmlFor="date-picker-input"
+    >
+      YYYY/MM/DD
+    </label>
+    <br />
+    <button
+      aria-label="select to open calendar"
+      className="iconButton"
+      onClick={[Function]}
+      type="button"
+    >
+      <CalendarIcon />
+    </button>
+    <input
+      aria-label="enter date in format YYYY/MM/DD"
+      autoComplete="off"
+      className="inputField"
+      id="date-picker-input"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="hidden"
+  >
+    <MonthPicker
+      clickedDate={
+        Object {
+          "date": 2,
+          "month": 1,
+          "year": 2020,
+        }
+      }
+      currentDate={
+        Object {
+          "dates": 31,
+          "month": 0,
+          "year": 2021,
+        }
+      }
+      setDateObject={[Function]}
+    />
+    <table
+      className="calendarTableContainer"
+      id="calendar-table"
+      onKeyDown={[Function]}
+      role="presentation"
+    >
+      <DaysHeading />
+      <DatesOfMonth
+        applicationMode={false}
+        datesOfMonth={31}
+        isClicked={
+          Object {
+            "buttonId": "button-2",
+            "selected": true,
+          }
+        }
+        month={0}
+        setClickedDate={[Function]}
+        setIsClicked={[Function]}
+        showCalendarHandler={[Function]}
+        year={2021}
+      />
+    </table>
+  </div>
+</Fragment>
+`;

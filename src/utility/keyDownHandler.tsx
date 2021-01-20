@@ -1,4 +1,4 @@
-export const keyDownHandler = (event: React.KeyboardEvent, dateObjectDates: number): void => {
+const keyDownHandler = (event: React.KeyboardEvent, buttonDate: number, setShowCalendar: React.Dispatch<React.SetStateAction<boolean>>): void => {
     event.preventDefault();
     const eventTarget = event.target as HTMLElement;
     const currentElementId = eventTarget.id.slice(-2) as string;
@@ -67,7 +67,7 @@ export const keyDownHandler = (event: React.KeyboardEvent, dateObjectDates: numb
             break;
 
         case "End":
-            (document.getElementById(`button-${dateObjectDates}`) as HTMLButtonElement).focus();
+            (document.getElementById(`button-${buttonDate}`) as HTMLButtonElement).focus();
             break;
 
         case "PageUp":
@@ -77,5 +77,11 @@ export const keyDownHandler = (event: React.KeyboardEvent, dateObjectDates: numb
         case "PageDown":
             (document.getElementById("button-next") as HTMLButtonElement).focus();
             break;
+
+        case "Escape":
+            setShowCalendar(false);
+            break;
     }
-}
+};
+
+export default keyDownHandler;

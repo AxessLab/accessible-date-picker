@@ -1,6 +1,29 @@
 import moment from "moment";
 
-const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>, dateFormat: string, setValue: any, setClickedDate: any, setIsClicked: any): void => {
+interface IClickedDate {
+    date?: number;
+    month?: number;
+    year?: number;
+}
+
+interface IIsClicked {
+    buttonId: string,
+    selected: boolean
+}
+
+interface IIsClicked {
+    buttonId: string,
+    selected: boolean
+}
+
+const onChangeHandler = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    dateFormat: string,
+    setValue: any,
+    setErrorMessage: React.Dispatch<React.SetStateAction<string>>,
+    setClickedDate: React.Dispatch<React.SetStateAction<IClickedDate>>,
+    setIsClicked: React.Dispatch<React.SetStateAction<IIsClicked>>): void => {
+
     const value = event.target.value;
     setValue(value);
     let date = "";
@@ -8,8 +31,33 @@ const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>, dateFormat:
     let year = "";
     let dateFormatCheck;
     let dateIsValid;
+    let invalidAt;
+    const errorNote = "Please check entered "
+
+    const errorDefinition = (inValidAt: number): string => {
+        let error;
+
+        switch (inValidAt) {
+            case 0:
+                error = "year!"
+                break;
+            case 1:
+                error = "month!"
+                break;
+            case 2:
+                error = "day!"
+                break;
+            case 3:
+                error = "Please check date format!"
+            default:
+                error = "Date doesn't match format!"
+        }
+
+        return error;
+    };
 
     if (value.length === 10) {
+        setErrorMessage("");
         if (dateFormat === "YYYY/MM/DD") {
             dateFormatCheck = moment(value, 'YYYY/MM/DD', true);
             dateIsValid = dateFormatCheck.isValid();
@@ -20,7 +68,8 @@ const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>, dateFormat:
                 year = value.charAt(0) + value.charAt(1) + value.charAt(2) + value.charAt(3);
             }
             else {
-                //give warning
+                invalidAt = dateFormatCheck.invalidAt();
+                setErrorMessage(errorNote + errorDefinition(invalidAt));
             }
         }
 
@@ -33,7 +82,8 @@ const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>, dateFormat:
                 month = value.charAt(3) + value.charAt(4);
                 year = value.charAt(6) + value.charAt(7) + value.charAt(8) + value.charAt(9);
             } else {
-                //give warning
+                invalidAt = dateFormatCheck.invalidAt();
+                setErrorMessage(errorNote + errorDefinition(invalidAt));
             }
         }
 
@@ -46,12 +96,16 @@ const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>, dateFormat:
                 date = value.charAt(3) + value.charAt(4);
                 year = value.charAt(6) + value.charAt(7) + value.charAt(8) + value.charAt(9);
             } else {
-                //give warning
+                invalidAt = dateFormatCheck.invalidAt();
+                setErrorMessage(errorNote + errorDefinition(invalidAt));
             }
         }
-
         setClickedDate({ year: +year, month: +month, date: +date });
         setIsClicked({ buttonId: +date < 10 ? `button-${date.charAt(1)}` : `button-${date}`, selected: true });
+    }
+
+    if (value.length > 10) {
+        setErrorMessage(errorDefinition(3));
     }
 };
 

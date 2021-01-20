@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correct heading that changes with next/previous 1`] = `
+<div
+  aria-live="assertive"
+>
+  <button
+    aria-label="previous month"
+    className="previousButton monthSelectionButtons"
+    id="button-previous"
+    onClick={[Function]}
+  >
+    Previous
+  </button>
+  <h2
+    id="month-label"
+  >
+    January
+     
+    2021
+  </h2>
+  <button
+    aria-label="next month"
+    className="nextButton monthSelectionButtons"
+    id="button-next"
+    onClick={[Function]}
+  >
+    Next
+  </button>
+</div>
+`;

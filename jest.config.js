@@ -5,6 +5,13 @@ module.exports = {
     "**/?(*.)+(spec|test).+(ts|tsx|js)",
   ],
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest",
+    "^.+\\.(t|j)sx?$": "ts-jest",
   },
+  coveragePathIgnorePatterns: [
+    "/node_modules/"
+  ],
+  moduleNameMapper: {
+    "\\.(css|less)$": "identity-obj-proxy",
+  },
+  snapshotSerializers: ["enzyme-to-json/serializer"]
 };

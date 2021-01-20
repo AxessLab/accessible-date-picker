@@ -1,0 +1,633 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`clickedDate changes states as expected 1`] = `
+<tbody
+  role="presentation"
+>
+  <tr
+    key="2021-0-0"
+    role="presentation"
+  >
+     
+    <td
+      className="disabled"
+      key="0"
+      role="presentation"
+    />
+    <td
+      className="disabled"
+      key="1"
+      role="presentation"
+    />
+    <td
+      className="disabled"
+      key="2"
+      role="presentation"
+    />
+    <td
+      className="disabled"
+      key="3"
+      role="presentation"
+    />
+    <td
+      className="disabled"
+      key="4"
+      role="presentation"
+    />
+    <td
+      id="tabledata-1"
+      key="1"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Friday January 1st 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-1"
+        key="button-2021-1-1"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        1
+      </button>
+    </td>
+    <td
+      id="tabledata-2"
+      key="2"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Saturday January 2nd 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-2"
+        key="button-2021-1-2"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        2
+      </button>
+    </td>
+     
+  </tr>
+  <tr
+    key="2021-0-1"
+    role="presentation"
+  >
+     
+    <td
+      id="tabledata-3"
+      key="3"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Sunday January 3rd 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-3"
+        key="button-2021-1-3"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        3
+      </button>
+    </td>
+    <td
+      id="tabledata-4"
+      key="4"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Monday January 4th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-4"
+        key="button-2021-1-4"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        4
+      </button>
+    </td>
+    <td
+      id="tabledata-5"
+      key="5"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Tuesday January 5th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-5"
+        key="button-2021-1-5"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        5
+      </button>
+    </td>
+    <td
+      id="tabledata-6"
+      key="6"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Wednesday January 6th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-6"
+        key="button-2021-1-6"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        6
+      </button>
+    </td>
+    <td
+      id="tabledata-7"
+      key="7"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Thursday January 7th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-7"
+        key="button-2021-1-7"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        7
+      </button>
+    </td>
+    <td
+      id="tabledata-8"
+      key="8"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Friday January 8th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-8"
+        key="button-2021-1-8"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        8
+      </button>
+    </td>
+    <td
+      id="tabledata-9"
+      key="9"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Saturday January 9th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-9"
+        key="button-2021-1-9"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        9
+      </button>
+    </td>
+     
+  </tr>
+  <tr
+    key="2021-0-2"
+    role="presentation"
+  >
+     
+    <td
+      id="tabledata-10"
+      key="10"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Sunday January 10th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-10"
+        key="button-2021-1-10"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        10
+      </button>
+    </td>
+    <td
+      id="tabledata-11"
+      key="11"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Monday January 11th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-11"
+        key="button-2021-1-11"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        11
+      </button>
+    </td>
+    <td
+      id="tabledata-12"
+      key="12"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Tuesday January 12th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-12"
+        key="button-2021-1-12"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        12
+      </button>
+    </td>
+    <td
+      id="tabledata-13"
+      key="13"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Wednesday January 13th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-13"
+        key="button-2021-1-13"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        13
+      </button>
+    </td>
+    <td
+      id="tabledata-14"
+      key="14"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Thursday January 14th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-14"
+        key="button-2021-1-14"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        14
+      </button>
+    </td>
+    <td
+      id="tabledata-15"
+      key="15"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Friday January 15th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-15"
+        key="button-2021-1-15"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        15
+      </button>
+    </td>
+    <td
+      id="tabledata-16"
+      key="16"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Saturday January 16th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-16"
+        key="button-2021-1-16"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        16
+      </button>
+    </td>
+     
+  </tr>
+  <tr
+    key="2021-0-3"
+    role="presentation"
+  >
+     
+    <td
+      id="tabledata-17"
+      key="17"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Sunday January 17th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-17"
+        key="button-2021-1-17"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        17
+      </button>
+    </td>
+    <td
+      id="tabledata-18"
+      key="18"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Monday January 18th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-18"
+        key="button-2021-1-18"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        18
+      </button>
+    </td>
+    <td
+      id="tabledata-19"
+      key="19"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Tuesday January 19th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-19"
+        key="button-2021-1-19"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        19
+      </button>
+    </td>
+    <td
+      id="tabledata-20"
+      key="20"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Wednesday January 20th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-20"
+        key="button-2021-1-20"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        20
+      </button>
+    </td>
+    <td
+      id="tabledata-21"
+      key="21"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Thursday January 21st 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-21"
+        key="button-2021-1-21"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        21
+      </button>
+    </td>
+    <td
+      id="tabledata-22"
+      key="22"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Friday January 22nd 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-22"
+        key="button-2021-1-22"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        22
+      </button>
+    </td>
+    <td
+      id="tabledata-23"
+      key="23"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Saturday January 23rd 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-23"
+        key="button-2021-1-23"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        23
+      </button>
+    </td>
+     
+  </tr>
+  <tr
+    key="2021-0-4"
+    role="presentation"
+  >
+     
+    <td
+      id="tabledata-24"
+      key="24"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Sunday January 24th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-24"
+        key="button-2021-1-24"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        24
+      </button>
+    </td>
+    <td
+      id="tabledata-25"
+      key="25"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Monday January 25th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-25"
+        key="button-2021-1-25"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        25
+      </button>
+    </td>
+    <td
+      id="tabledata-26"
+      key="26"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Tuesday January 26th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-26"
+        key="button-2021-1-26"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        26
+      </button>
+    </td>
+    <td
+      id="tabledata-27"
+      key="27"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Wednesday January 27th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-27"
+        key="button-2021-1-27"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        27
+      </button>
+    </td>
+    <td
+      id="tabledata-28"
+      key="28"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Thursday January 28th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-28"
+        key="button-2021-1-28"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        28
+      </button>
+    </td>
+    <td
+      id="tabledata-29"
+      key="29"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Friday January 29th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-29"
+        key="button-2021-1-29"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        29
+      </button>
+    </td>
+    <td
+      id="tabledata-30"
+      key="30"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Saturday January 30th 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-30"
+        key="button-2021-1-30"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        30
+      </button>
+    </td>
+     
+  </tr>
+  <tr
+    key="2021-0-5"
+    role="presentation"
+  >
+     
+    <td
+      id="tabledata-31"
+      key="31"
+      role="presentation"
+      tabIndex={-1}
+    >
+      <button
+        aria-label=" Sunday January 31st 2021"
+        aria-pressed={false}
+        className="calendarCells "
+        id="button-31"
+        key="button-2021-1-31"
+        onClick={[Function]}
+        tabIndex={0}
+      >
+        31
+      </button>
+    </td>
+     
+  </tr>
+</tbody>
+`;

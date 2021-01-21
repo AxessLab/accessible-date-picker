@@ -23,16 +23,14 @@ function App() {
     };
 
     return (
-        <>
-            <form aria-labelledby="form-example" onSubmit={e => preventDefault(e)} method="post">
-                <h1>Accessible Date Picker</h1>
-                <label htmlFor="name">Name:</label> <br />
-                <input className={styles.inputField} type="text" id="name" autoComplete="off" onChange={(e) => handleNameData(e)}></input><br />
-                <label htmlFor="date-picker-input">Date:</label><br />
-                <DatePicker value={value} setValue={setValue} dateFormat="YYYY/MM/DD" />
-                <button style={{ marginTop: "12px" }} type="submit" value="Submit" onClick={(e) => submitForm(e)}>Submit</button>
-            </form>
-        </>
+        <form aria-labelledby="form-example" onSubmit={e => preventDefault(e)} method="post">
+            <h1>Accessible Date Picker</h1>
+            <label htmlFor="name">Name:</label> <br />
+            <input className={styles.inputField} type="text" id="name" autoComplete="off" onChange={(e) => handleNameData(e)}></input><br />
+            <label htmlFor="date-picker-input">Date:</label><br />
+            <DatePicker value={value} setValue={setValue} dateFormat="YYYY/MM/DD" />
+            <button style={{ marginTop: "12px" }} type="submit" value="Submit" onClick={(e) => submitForm(e)}>Submit</button>
+        </form>
     );
 }
 

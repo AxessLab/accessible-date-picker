@@ -19,7 +19,7 @@ interface IIsClicked {
 const onChangeHandler = (
     event: React.ChangeEvent<HTMLInputElement>,
     dateFormat: string,
-    setValue: any,
+    setValue: React.Dispatch<React.SetStateAction<string>>,
     setErrorMessage: React.Dispatch<React.SetStateAction<string>>,
     setClickedDate: React.Dispatch<React.SetStateAction<IClickedDate>>,
     setIsClicked: React.Dispatch<React.SetStateAction<IIsClicked>>): void => {
@@ -38,19 +38,16 @@ const onChangeHandler = (
         let error;
 
         switch (inValidAt) {
-            case 0:
-                error = "year!"
-                break;
             case 1:
-                error = "month!"
+                error = "month"
                 break;
             case 2:
-                error = "day!"
+                error = "day"
                 break;
             case 3:
-                error = "Please check date format!"
+                error = "Please check date format"
             default:
-                error = "Date doesn't match format!"
+                error = "Date doesn't match format"
         }
 
         return error;

@@ -46,7 +46,7 @@ overflow, date and month.
 ## How to install 
 You can install the date picker as a npm package by running the following command in your project:
 
-<code>npm install accessible-datepicker</code>
+<code>npm i accessible-date-picker</code>
 
 
 ## How to contribute 
@@ -54,8 +54,8 @@ We are always open to contributions and improvements. If you find bugs or know o
 1. Forking the Accessible Date Pickers repository on github
 2. Clone the repository by running git clone https://github.com/AxessLab/accessible-date-picker.git
 3. Once cloned, open the directory and <code>run npm install.</code>
-4. Run <code>npm start</code> to get the development server up and running at http://localhost:4000/. 
-5. Once ready make a pull request
+4. Run <code>npm start</code> to get the development server up and running at http://localhost:4000/. Make your changes in the code.
+5. When you're happy, push the code and make a pull request - we will look at it as soon as possible.
 
 ### Testing and building
 

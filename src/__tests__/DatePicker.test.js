@@ -2,7 +2,7 @@ import React from "react";
 import { shallow, configure } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import toJson from 'enzyme-to-json';
-import DatePicker from "../containers/DatePicker";
+import DatePicker from "../container/DatePicker";
 
 configure({ adapter: new Adapter() });
 

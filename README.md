@@ -6,14 +6,14 @@ and is easy to use by everyone.
 We at Axess Lab decided to build one and open source it so that others could benefit 
 from it. 
 
- ![DatePicker](./datePickerImage.png)
+ ![DatePicker](.\src\images\datePickerImage.png)
 
 <br/>
 
 ## Getting Started 
 With an application built using the <code>create-react-app</code> script the easiest way to include Accessible Date Picker is to import it in to the file you will be using it in:
 
-<code> import { Datepicker } from "@something/something/something"; </code>
+<code> import DatePicker from "accessible-date-picker/src/containers/DatePicker"; </code>
 
 Then the component can be used as such: 
 
@@ -40,7 +40,7 @@ will read an error if it occurs.
 The date picker has a basic validation check for entered dates. It can point out errors in 
 overflow, date and month.
 
- ![DatePicker](./errorImage.png)
+ ![DatePicker](.\src\images\errorImage.png)
 
 
 ## How to install 

@@ -3,7 +3,7 @@ import webpack from "webpack";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
 const config: webpack.Configuration = {
-  entry: "./src/index.tsx",
+  entry: "./src/demo/index.tsx",
   module: {
     rules: [
       {

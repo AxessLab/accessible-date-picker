@@ -6,7 +6,7 @@ and is easy to use by everyone.
 We at Axess Lab decided to build one and open source it so that others could benefit 
 from it. 
 
- ![DatePicker](.\src\images\datePickerImage.png)
+ ![DatePicker](.\images\datePickerImage.png)
 
 <br/>
 
@@ -40,7 +40,7 @@ will read an error if it occurs.
 The date picker has a basic validation check for entered dates. It can point out errors in 
 overflow, date and month.
 
- ![DatePicker](.\src\images\errorImage.png)
+ ![DatePicker](.\images\errorImage.png)
 
 
 ## How to install 
@@ -60,4 +60,4 @@ We are always open to contributions and improvements. If you find bugs or know o
 ### Testing and building
 
 1. To run the unit test run  <code>npm test</code>.
-2. To build the project use <code>npm build</code>.
+2. To build the project use <code>npm run-script build</code>.

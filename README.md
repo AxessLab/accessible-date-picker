@@ -6,7 +6,7 @@ and is easy to use by everyone.
 We at Axess Lab decided to build one and open source it so that others could benefit 
 from it. 
 
- ![DatePicker](/datePickerImage.png)
+ ![DatePicker](./datePickerImage.png)
 
 <br/>
 
@@ -40,7 +40,7 @@ will read an error if it occurs.
 The date picker has a basic validation check for entered dates. It can point out errors in 
 overflow, date and month.
 
- ![DatePicker](/errorImage.png)
+ ![DatePicker](./errorImage.png)
 
 
 ## How to install 

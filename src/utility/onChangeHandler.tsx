@@ -39,15 +39,15 @@ const onChangeHandler = (
 
         switch (inValidAt) {
             case 1:
-                error = "month"
+                error = "month!"
                 break;
             case 2:
-                error = "day"
+                error = "day!"
                 break;
             case 3:
-                error = "Please check date format"
+                error = "Please check date forma!t"
             default:
-                error = "Date doesn't match format"
+                error = "Date doesn't match format!"
         }
 
         return error;

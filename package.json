@@ -1,13 +1,18 @@
 {
   "name": "accessible-date-picker",
   "version": "3.2.0",
-  "repository": ".",
+  "main": "dist/index.js",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "repository": "https://github.com/AxessLab/accessible-date-picker",
   "homepage": ".",
   "license": "MIT",
   "description": "An accessible datepicker. Supports natural language manual input, keyboard and screen readers.",
   "scripts": {
     "start": "webpack serve",
     "build": "webpack --mode production",
+    "prepublish": "rm -rf ./dist && npm run build",
     "test": "jest"
   },
   "keywords": [
@@ -22,7 +27,9 @@
     "keyboard"
   ],
   "dependencies": {
-    "moment": "^2.29.1",
+    "moment": "^2.29.1"
+  },
+  "peerDependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
@@ -51,9 +58,14 @@
     "eslint": "^7.14.0",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "extract-text-webpack-plugin": "^3.0.2",
     "fork-ts-checker-webpack-plugin": "^6.0.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
+    "node-sass": "^5.0.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "sass-loader": "^10.1.1",
     "style-loader": "^2.0.0",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.0.0",

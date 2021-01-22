@@ -1,6 +1,7 @@
 import path from "path";
 import webpack from "webpack";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const config: webpack.Configuration = {
   entry: "./src/demo/index.tsx",
@@ -31,15 +32,47 @@ const config: webpack.Configuration = {
           },
         ],
       },
+      {
+        test: /\.*css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader',
+            'sass-loader'
+          ]
+        })
+      },
     ],
   },
   devtool: "source-map",
   resolve: {
+    alias: {
+      'react': path.resolve(__dirname, './node_modules/react'),
+      'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
+    },
     extensions: [".tsx", ".ts", ".js", ".css", ".scss"],
+
+  },
+  externals: {
+    react: {
+      commonjs: "react",
+      commonjs2: "react",
+      amd: "React",
+      root: "React"
+    },
+    "react-dom": {
+      commonjs: "react-dom",
+      commonjs2: "react-dom",
+      amd: "ReactDOM",
+      root: "ReactDOM"
+    }
   },
   output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "bundle.js",
+    path: path.join(__dirname, './dist'),
+    filename: 'accessible-datepicker.js',
+    libraryTarget: 'umd',
+    publicPath: '/dist/',
+    umdNamedDefine: true
   },
   devServer: {
     contentBase: path.join(__dirname, "build"),
@@ -53,7 +86,11 @@ const config: webpack.Configuration = {
         files: "./src/**/*",
       },
     }),
+    new ExtractTextPlugin({
+      filename: 'myUnflappableComponent.css',
+    }),
   ],
 };
 
 export default config;
+

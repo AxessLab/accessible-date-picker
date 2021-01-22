@@ -3,7 +3,7 @@ import webpack from "webpack";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
 const config: webpack.Configuration = {
-  entry: "./src/demo/index.tsx",
+  entry: "./src/container/DatePicker.tsx",
   module: {
     rules: [
       {

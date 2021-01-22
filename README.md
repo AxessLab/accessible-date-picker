@@ -13,7 +13,7 @@ from it.
 ## Getting Started 
 With an application built using the <code>create-react-app</code> script the easiest way to include Accessible Date Picker is to import it in to the file you will be using it in:
 
-<code> import DatePicker from "accessible-date-picker/src/containers/DatePicker"; </code>
+<code> import DatePicker from "accessible-date-picker/src/container/DatePicker"; </code>
 
 Then the component can be used as such: 
 

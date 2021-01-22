@@ -60,9 +60,9 @@ const onChangeHandler = (
             dateIsValid = dateFormatCheck.isValid();
 
             if (dateIsValid === true) {
-                date = value.charAt(8) + value.charAt(9);
-                month = value.charAt(5) + value.charAt(6);
-                year = value.charAt(0) + value.charAt(1) + value.charAt(2) + value.charAt(3);
+                date = value.slice(8, 10);
+                month = value.slice(5, 7);
+                year = value.slice(0, 4);
             }
             else {
                 invalidAt = dateFormatCheck.invalidAt();
@@ -75,9 +75,9 @@ const onChangeHandler = (
             dateIsValid = dateFormatCheck.isValid();
 
             if (dateIsValid === true) {
-                date = value.charAt(0) + value.charAt(1);
-                month = value.charAt(3) + value.charAt(4);
-                year = value.charAt(6) + value.charAt(7) + value.charAt(8) + value.charAt(9);
+                date = value.slice(0, 2);
+                month = value.slice(3, 5);
+                year = value.slice(6, 10);
             } else {
                 invalidAt = dateFormatCheck.invalidAt();
                 setErrorMessage(errorNote + errorDefinition(invalidAt));
@@ -89,9 +89,9 @@ const onChangeHandler = (
             dateIsValid = dateFormatCheck.isValid();
 
             if (dateIsValid === true) {
-                month = value.charAt(0) + value.charAt(1);
-                date = value.charAt(3) + value.charAt(4);
-                year = value.charAt(6) + value.charAt(7) + value.charAt(8) + value.charAt(9);
+                date = value.slice(3, 5);
+                month = value.slice(0, 2);
+                year = value.slice(6, 10);
             } else {
                 invalidAt = dateFormatCheck.invalidAt();
                 setErrorMessage(errorNote + errorDefinition(invalidAt));

@@ -1,7 +1,6 @@
 import path from "path";
 import webpack from "webpack";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const config: webpack.Configuration = {
   entry: "./src/demo/index.tsx",
@@ -31,16 +30,6 @@ const config: webpack.Configuration = {
             options: { modules: true },
           },
         ],
-      },
-      {
-        test: /\.*css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader',
-            'sass-loader'
-          ]
-        })
       },
     ],
   },
@@ -85,9 +74,6 @@ const config: webpack.Configuration = {
       eslint: {
         files: "./src/**/*",
       },
-    }),
-    new ExtractTextPlugin({
-      filename: 'myUnflappableComponent.css',
     }),
   ],
 };

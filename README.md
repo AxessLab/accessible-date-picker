@@ -13,7 +13,7 @@ from it.
 ## Getting Started 
 With an application built using the <code>create-react-app</code> script the easiest way to include Accessible Date Picker is to import it in to the file you will be using it in:
 
-<code> import DatePicker from "accessible-date-picker/src/container/DatePicker"; </code>
+<code>import DatePicker from "accessible-date-picker/dist/accessible-datepicker";</code>
 
 Then the component can be used as such: 
 
@@ -54,7 +54,7 @@ We are always open to contributions and improvements. If you find bugs or know o
 1. Forking the Accessible Date Pickers repository on github
 2. Clone the repository by running git clone https://github.com/AxessLab/accessible-date-picker.git
 3. Once cloned, open the directory and <code>run npm install.</code>
-4. Run <code>npm start</code> to get the development server up and running at http://localhost:4000/. Make your changes in the code.
+4. Run <code>npm start</code> to get the development server up and running. Make your changes in the code.
 5. When you're happy, push the code and make a pull request - we will look at it as soon as possible.
 
 ### Testing and building

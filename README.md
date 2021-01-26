@@ -64,4 +64,3 @@ We are always open to contributions and improvements. If you find bugs or know o
 ### Testing and building
 
 1. To run the unit test run  <code>npm test</code>.
-2. To build the project use <code>npm run-script build</code>.

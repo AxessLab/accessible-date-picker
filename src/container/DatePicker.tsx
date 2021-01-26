@@ -9,7 +9,7 @@ import DatesOfMonth from "../components/DatesOfMonth";
 import keyDownHandler from "../utility/keyDownHandler";
 import onChangeHandler from "../utility/onChangeHandler";
 
-type DateFormat = "YYYY/MM/DD" | "DD/MM/YYYY" | "MM/DD/YYYY";
+type DateFormat = "YYYY/MM/DD" | "YYYY/DD/MM" | "DD/MM/YY" | "MM/DD/YY" | "DD/MM/YYYY" | "MM/DD/YYYY";
 interface IDatePickerProps {
   applicationMode?: boolean;
   value: string;

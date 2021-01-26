@@ -26,13 +26,11 @@ const onChangeHandler = (
 
     const value = event.target.value;
     setValue(value);
+
     let date = "";
     let month = "";
     let year = "";
-    let dateFormatCheck;
-    let dateIsValid;
-    let invalidAt;
-    const errorNote = "Please check entered "
+    let validataionChecker;
 
     const errorDefinition = (inValidAt: number): string => {
         let error;
@@ -45,7 +43,7 @@ const onChangeHandler = (
                 error = "day!"
                 break;
             case 3:
-                error = "Please check date forma!t"
+                error = "Please check date format!"
             default:
                 error = "Date doesn't match format!"
         }
@@ -53,55 +51,96 @@ const onChangeHandler = (
         return error;
     };
 
+    const validateDateFormat = (targetValue: string, dateFormat: string) => {
+        const dateFormatCheck = moment(targetValue, dateFormat, true);
+        const dateIsValid = dateFormatCheck.isValid();
+        if (dateIsValid === true) {
+            return true;
+        }
+        else {
+            const invalidAt = dateFormatCheck.invalidAt();
+            const errorNote = "Please check entered ";
+            setErrorMessage(errorNote + errorDefinition(invalidAt));
+        }
+    };
+
+    const yearChecker = (year: string) => {
+        return `20${year}`
+    };
+
+    if (value.length === 8) {
+        if (dateFormat === "DD/MM/YY") {
+            validataionChecker = validateDateFormat(value, "DD/MM/YY");
+
+            if (validataionChecker === true) {
+                date = value.slice(0, 2);
+                month = value.slice(3, 5);
+                year = value.slice(6, 8);
+            }
+        }
+
+        if (dateFormat === "MM/DD/YY") {
+            validataionChecker = validateDateFormat(value, "MM/DD/YY");
+
+            if (validataionChecker === true) {
+                date = value.slice(3, 5);
+                month = value.slice(0, 2);
+                year = value.slice(6, 8);
+            }
+        }
+
+        setClickedDate({ year: +yearChecker(year), month: +month, date: +date });
+        setIsClicked({ buttonId: +date < 10 ? `button-${date.charAt(1)}` : `button-${date}`, selected: true });
+    }
+
     if (value.length === 10) {
         setErrorMessage("");
-        if (dateFormat === "YYYY/MM/DD") {
-            dateFormatCheck = moment(value, 'YYYY/MM/DD', true);
-            dateIsValid = dateFormatCheck.isValid();
 
-            if (dateIsValid === true) {
+        if (dateFormat === "YYYY/MM/DD") {
+            validataionChecker = validateDateFormat(value, "YYYY/MM/DD");
+
+            if (validataionChecker === true) {
                 date = value.slice(8, 10);
                 month = value.slice(5, 7);
                 year = value.slice(0, 4);
             }
-            else {
-                invalidAt = dateFormatCheck.invalidAt();
-                setErrorMessage(errorNote + errorDefinition(invalidAt));
+        }
+
+        if (dateFormat === "YYYY/DD/MM") {
+            validataionChecker = validateDateFormat(value, "YYYY/DD/MM");
+
+            if (validataionChecker === true) {
+                date = value.slice(5, 7);
+                month = value.slice(8, 10);
+                year = value.slice(0, 4);
             }
         }
 
         if (dateFormat === "DD/MM/YYYY") {
-            dateFormatCheck = moment(value, "DD/MM/YYYY", true);
-            dateIsValid = dateFormatCheck.isValid();
+            validataionChecker = validateDateFormat(value, "DD/MM/YYYY");
 
-            if (dateIsValid === true) {
+            if (validataionChecker === true) {
                 date = value.slice(0, 2);
                 month = value.slice(3, 5);
                 year = value.slice(6, 10);
-            } else {
-                invalidAt = dateFormatCheck.invalidAt();
-                setErrorMessage(errorNote + errorDefinition(invalidAt));
             }
         }
 
         if (dateFormat === "MM/DD/YYYY") {
-            dateFormatCheck = moment(value, "MM/DD/YYYY", true);
-            dateIsValid = dateFormatCheck.isValid();
+            validataionChecker = validateDateFormat(value, "MM/DD/YYYY");
 
-            if (dateIsValid === true) {
+            if (validataionChecker === true) {
                 date = value.slice(3, 5);
                 month = value.slice(0, 2);
                 year = value.slice(6, 10);
-            } else {
-                invalidAt = dateFormatCheck.invalidAt();
-                setErrorMessage(errorNote + errorDefinition(invalidAt));
             }
         }
+
         setClickedDate({ year: +year, month: +month, date: +date });
         setIsClicked({ buttonId: +date < 10 ? `button-${date.charAt(1)}` : `button-${date}`, selected: true });
     }
 
-    if (value.length > 10) {
+    if (value.length > dateFormat.length) {
         setErrorMessage(errorDefinition(3));
     }
 };

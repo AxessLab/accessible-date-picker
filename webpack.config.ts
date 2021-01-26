@@ -4,6 +4,40 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
 const config: webpack.Configuration = {
   entry: "./src/container/DatePicker.tsx",
+  devtool: "source-map",
+  devServer: {
+    contentBase: path.join(__dirname, './dist'),
+    compress: true,
+    port: 4000,
+  },
+  resolve: {
+    alias: {
+      'react': path.resolve(__dirname, './node_modules/react'),
+      'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
+    },
+    extensions: [".tsx", ".ts", ".js", ".css", ".scss"],
+  },
+  externals: {
+    react: {
+      commonjs: "react",
+      commonjs2: "react",
+      amd: "React",
+      root: "React"
+    },
+    "react-dom": {
+      commonjs: "react-dom",
+      commonjs2: "react-dom",
+      amd: "ReactDOM",
+      root: "ReactDOM"
+    }
+  },
+  output: {
+    path: path.join(__dirname, './dist'),
+    filename: 'accessible-datepicker.js',
+    libraryTarget: 'umd',
+    publicPath: '/dist/',
+    umdNamedDefine: true
+  },
   module: {
     rules: [
       {
@@ -32,41 +66,6 @@ const config: webpack.Configuration = {
         ],
       },
     ],
-  },
-  devtool: "source-map",
-  resolve: {
-    alias: {
-      'react': path.resolve(__dirname, './node_modules/react'),
-      'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
-    },
-    extensions: [".tsx", ".ts", ".js", ".css", ".scss"],
-
-  },
-  externals: {
-    react: {
-      commonjs: "react",
-      commonjs2: "react",
-      amd: "React",
-      root: "React"
-    },
-    "react-dom": {
-      commonjs: "react-dom",
-      commonjs2: "react-dom",
-      amd: "ReactDOM",
-      root: "ReactDOM"
-    }
-  },
-  output: {
-    path: path.join(__dirname, './dist'),
-    filename: 'accessible-datepicker.js',
-    libraryTarget: 'umd',
-    publicPath: '/dist/',
-    umdNamedDefine: true
-  },
-  devServer: {
-    contentBase: path.join(__dirname, "build"),
-    compress: true,
-    port: 4000,
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin({

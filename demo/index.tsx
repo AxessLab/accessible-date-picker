@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-import styles from "../styles/stylesDatePicker.css";
-import DatePicker from "../container/DatePicker";
+import styles from "../src/styles/stylesDatePicker.css";
+import DatePicker from "../src/container/DatePicker";
 
 function App() {
 

@@ -25,9 +25,10 @@ Then the component can be used as such:
 | Attribute Name | Mandatory | Value | Description |    
 | :-----------: |:-----------:| :-----------:| :-----|
 | applicationMode | no    | boolean  | The Accessible Date Picker comes with two modes for the screen readers. By default the picker has <code>applicationMode={false}</code>, which means traditional HTML interpretion techniques will be used. But if you want to support desktop-live web like applications passing down the following attribute will make the date picker behave as such.  |
-| dateFormat | yes     | "YYYY/MM/DD"  "DD-MM-YYYY" "MM.DD.YYYY" "DD/MM/YY" |   Enter any string format and separator you wish to use in your input element such as the exammples on the left. /YY formatted years will only work as years in the 2000s. |
+| validation | yes   | boolean  | Set to true if you want to make use of the validation check to find errors in entered months, dates or in the number of entered characters.  |
+| dateFormat | yes     | "YYYY/MM/DD"  "DD-MM-YYYY" "MM.DD.YYYY" "DD/MM/YY" |   Enter any string format and separator you wish to use in your input element such as the examples on the left. Please note that /YY formatted years will only work as years in the 2000s. |
 | value | yes      |    {value} | To get started you can define a state for value and setValue and pass it down to the component or pass a value you have created as a prop. Exp:  <code>const [value, setValue] = useState('');</code>
-| setValue | yes      |    {setValue} | To get started you can define a state for value and setValue and pass it down to the component or pass a value you have created as a prop. Exp: <code>const [value, setValue] = useState('');</code> | validation | yes | boolean | Set to true if you want to make use of the simple validation check to find errors in entered month, date or number of entered characters. 
+| setValue | yes      |    {setValue} | To get started you can define a state for value and setValue and pass it down to the component or pass a value you have created as a prop. Exp: <code>const [value, setValue] = useState('');</code> |  | yes | boolean |
 
 <br/>
 

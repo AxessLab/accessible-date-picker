@@ -27,7 +27,7 @@ Then the component can be used as such:
 | applicationMode | no    | boolean  | The Accessible Date Picker comes with two modes for the screen readers. By default the picker has <code>applicationMode={false}</code>, which means traditional HTML interpretion techniques will be used. But if you want to support desktop-live web like applications passing down the following attribute will make the date picker behave as such.  |
 | dateFormat | yes     | "YYYY/MM/DD" "YYYY/DD/MM" "DD/MM/YYYY" "MM/DD/YYYY" "DD/MM/YY" "MM/DD/YY" |   Enter the string format you wish you use in your input element. /YY formatted years will only work as years in the 2000s. |
 | value | yes      |    {value} | To get started you can define a state for value and setValue and pass it down to the component or pass a value you have created as a prop. Exp:  <code>const [value, setValue] = useState('');</code>
-| setValue | yes      |    {setValue} | To get started you can define a state for value and setValue and pass it down to the component or pass a value you have created as a prop. Exp:  <code>const [value, setValue] = useState('');</code> | validation | yes | boolean | Set to true if you want to make use of the simple validation check to find errors in entered month, date or number of entered characters. 
+| setValue | yes      |    {setValue} | To get started you can define a state for value and setValue and pass it down to the component or pass a value you have created as a prop. Exp: <code>const [value, setValue] = useState('');</code> | validation | yes | boolean | Set to true if you want to make use of the simple validation check to find errors in entered month, date or number of entered characters. 
 
 <br/>
 

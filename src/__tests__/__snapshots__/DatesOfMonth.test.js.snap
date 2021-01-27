@@ -10,27 +10,27 @@ exports[`clickedDate changes states as expected 1`] = `
   >
      
     <td
-      className="disabled"
+      className="disabledCalendarCell"
       key="0"
       role="presentation"
     />
     <td
-      className="disabled"
+      className="disabledCalendarCell"
       key="1"
       role="presentation"
     />
     <td
-      className="disabled"
+      className="disabledCalendarCell"
       key="2"
       role="presentation"
     />
     <td
-      className="disabled"
+      className="disabledCalendarCell"
       key="3"
       role="presentation"
     />
     <td
-      className="disabled"
+      className="disabledCalendarCell"
       key="4"
       role="presentation"
     />

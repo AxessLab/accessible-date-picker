@@ -9,8 +9,9 @@ configure({ adapter: new Adapter() });
 const mockSetClickedDate = jest.fn();
 const mockShowCalendarHandler = jest.fn();
 const mockSetIsClicked = jest.fn();
+const mockSetErrorMesage = jest.fn();
 
-const wrapper = shallow(<DatesOfMonth year={2021} month={0} datesOfMonth={31} setClickedDate={mockSetClickedDate} showCalendarHandler={mockShowCalendarHandler} isClicked={false} setIsClicked={mockSetIsClicked} />);
+const wrapper = shallow(<DatesOfMonth year={2021} month={0} datesOfMonth={31} setClickedDate={mockSetClickedDate} showCalendarHandler={mockShowCalendarHandler} isClicked={false} setIsClicked={mockSetIsClicked} setErrorMesage={mockSetErrorMesage} />);
 
 test("renders table with correct amount of elements", () => {
     const tbody = wrapper.find('tbody');
@@ -27,6 +28,7 @@ test("clickedDate changes states as expected", () => {
     wrapper.find('#button-1').simulate('click');
     expect(mockSetClickedDate).toHaveBeenCalledWith({ year: 2021, month: 1, date: 1 });
     expect(mockSetIsClicked).toHaveBeenCalledWith({ buttonId: "button-1", selected: true });
+    expect(mockSetErrorMesage).toHaveBeenCalledWith("");
     expect(mockShowCalendarHandler).toHaveBeenCalled();
 
     expect(toJson(wrapper)).toMatchSnapshot();

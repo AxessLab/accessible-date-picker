@@ -7,7 +7,7 @@ exports[`datePicker changes input state value 1`] = `
   >
     <label
       aria-label="enter date in the following format"
-      className="label"
+      className="labelDatePicker"
       htmlFor="date-picker-input"
     >
       YYYY/MM/DD
@@ -24,7 +24,7 @@ exports[`datePicker changes input state value 1`] = `
     <input
       aria-label="enter date in format YYYY/MM/DD"
       autoComplete="off"
-      className="inputField"
+      className="inputFieldDatePicker"
       id="date-picker-input"
       onChange={[Function]}
       type="text"
@@ -32,7 +32,7 @@ exports[`datePicker changes input state value 1`] = `
     />
   </div>
   <div
-    className="hidden"
+    className="hiddenCalendar"
   >
     <MonthPicker
       clickedDate={
@@ -69,6 +69,7 @@ exports[`datePicker changes input state value 1`] = `
         }
         month={0}
         setClickedDate={[Function]}
+        setErrorMesage={[Function]}
         setIsClicked={[Function]}
         showCalendarHandler={[Function]}
         year={2021}

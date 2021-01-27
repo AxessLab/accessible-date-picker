@@ -28,7 +28,7 @@ function App() {
             <label htmlFor="name">Name:</label> <br />
             <input className={styles.inputField} type="text" id="name" autoComplete="off" onChange={(e) => handleNameData(e)}></input><br />
             <label htmlFor="date-picker-input">Date:</label><br />
-            <DatePicker value={value} setValue={setValue} dateFormat="YYYY/MM/DD" />
+            <DatePicker value={value} setValue={setValue} dateFormat="YYYY/MM/DD" validation={false} />
             <button style={{ marginTop: "12px" }} type="submit" value="Submit" onClick={(e) => submitForm(e)}>Submit</button>
         </form>
     );

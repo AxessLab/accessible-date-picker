@@ -19,6 +19,7 @@ interface IIsClicked {
 const onChangeHandler = (
     event: React.ChangeEvent<HTMLInputElement>,
     dateFormat: string,
+    validation: boolean,
     setValue: React.Dispatch<React.SetStateAction<string>>,
     setErrorMessage: React.Dispatch<React.SetStateAction<string>>,
     setClickedDate: React.Dispatch<React.SetStateAction<IClickedDate>>,
@@ -60,7 +61,7 @@ const onChangeHandler = (
         else {
             const invalidAt = dateFormatCheck.invalidAt();
             const errorNote = "Please check entered ";
-            setErrorMessage(errorNote + errorDefinition(invalidAt));
+            validation ? setErrorMessage(errorNote + errorDefinition(invalidAt)) : null;
         }
     };
 
@@ -141,7 +142,7 @@ const onChangeHandler = (
     }
 
     if (value.length > dateFormat.length) {
-        setErrorMessage(errorDefinition(3));
+        validation ? setErrorMessage(errorDefinition(3)) : null;
     }
 };
 

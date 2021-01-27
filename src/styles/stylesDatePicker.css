@@ -15,21 +15,21 @@ body {
   --third: #871111;
 }
 
-abbr {
+.abbrDays {
   border: none;
   text-decoration: none;
   padding: 8px;
   color: var(--third);
 }
 
-h2 {
+.h2DatePicker {
   padding: 8px;
   display: inline-block;
   color: var(--secondary);
 }
 
 /* CSS for the input field */
-.label {
+.labelDatePicker {
   font-style: italic;
   font-size: smaller;
 }
@@ -43,7 +43,7 @@ h2 {
   text-align: center; 
 } 
 
-.inputField { 
+.inputFieldDatePicker { 
   padding: 10px 10px 10px 36px; 
   text-align: left; 
 } 
@@ -88,23 +88,23 @@ h2 {
   text-decoration: underline;
 }
 
-.previousButton {
+.previousCalendarButton {
   float: left;
 }
-.previousButton:hover {
+.previousCalendarButton:hover {
   color: var(--main);
   background-color: var(--third);
 }
 
-.nextButton {
+.nextCalendarButton {
   float: right;
 }
-.nextButton:hover {
+.nextCalendarButton:hover {
   color: var(--main);
   background-color: var(--third);
 }
 
-.disabled {
+.disabledCalendarCell {
   background-color: var(--main);
 }
 
@@ -114,7 +114,7 @@ h2 {
   color: var(--main);
 }
 
-.hidden {
+.hiddenCalendar {
   display: none;
 }
 

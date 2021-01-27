@@ -27,7 +27,11 @@ const config: webpack.Configuration = {
           "@teamsupercell/typings-for-css-modules-loader",
           {
             loader: "css-loader",
-            options: { modules: true },
+            options: {
+              modules: {
+                localIdentName: "[local]",
+              },
+            },
           },
         ],
       },

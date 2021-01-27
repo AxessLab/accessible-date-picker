@@ -43,7 +43,7 @@ const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => {
     const blankCells: JSX.Element[] = [];
     for (let i = 0; i < findFirstDayOfMonth(); i++) {
         blankCells.push(
-            <td key={i} role="presentation" className={styles.disabled}></td>
+            <td key={i} role="presentation" className={styles.disabledCalendarCell}></td>
         );
     }
 

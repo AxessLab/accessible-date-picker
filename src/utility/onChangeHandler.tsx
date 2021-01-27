@@ -85,7 +85,7 @@ const onChangeHandler = (
         setIsClicked({ buttonId: +date < 10 ? `button-${date.charAt(1)}` : `button-${date}`, selected: true });
     }
 
-    if (value.length === 10 || value.length === 8) {
+    if (value.length === dateFormat.length) {
         setErrorMessage("");
 
         const validataionChecker = dateValidator(value, dateFormat);

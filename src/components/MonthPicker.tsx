@@ -62,9 +62,9 @@ const MonthPicker: React.FC<IMonthPickerProps> = (props) => {
 
     return (
         <div aria-live="assertive">
-            <button id="button-previous" className={`${styles.previousButton} ${styles.monthSelectionButtons}`} aria-label="previous month" onClick={() => { changeMonthHandler("previous") }}>Previous</button>
-            <h2 id="month-label">{monthArray[clickedDate.month ? clickedDate.month - 1 : currentDate.month]}{" "}{clickedDate.year ? clickedDate.year : currentDate.year}</h2>
-            <button id="button-next" className={`${styles.nextButton} ${styles.monthSelectionButtons}`} aria-label="next month" onClick={() => { changeMonthHandler("next") }}>Next</button>
+            <button id="button-previous" className={`${styles.previousCalendarButton} ${styles.monthSelectionButtons}`} aria-label="previous month" onClick={() => { changeMonthHandler("previous") }}>Previous</button>
+            <h2 className={styles.h2DatePicker} id="month-label">{monthArray[clickedDate.month ? clickedDate.month - 1 : currentDate.month]}{" "}{clickedDate.year ? clickedDate.year : currentDate.year}</h2>
+            <button id="button-next" className={`${styles.nextCalendarButton} ${styles.monthSelectionButtons}`} aria-label="next month" onClick={() => { changeMonthHandler("next") }}>Next</button>
         </div>
     );
 };

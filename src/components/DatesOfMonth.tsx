@@ -16,15 +16,17 @@ interface IDaysOfMonthsProps {
     showCalendarHandler: () => void;
     isClicked: IIsClicked;
     setIsClicked: (object: IIsClicked) => void
+    setErrorMesage: (value: string) => void
 }
 
 const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => {
-    const { year, month, datesOfMonth, applicationMode, setClickedDate, showCalendarHandler, isClicked, setIsClicked } = props
+    const { year, month, datesOfMonth, applicationMode, setClickedDate, showCalendarHandler, isClicked, setIsClicked, setErrorMesage } = props
 
 
     const clickedDateHandler = (year: number, month: number, date: number, buttonId: string) => {
         setClickedDate({ year: year, month: month + 1, date: date });
         setIsClicked({ buttonId: buttonId, selected: true });
+        setErrorMesage("");
         showCalendarHandler();
     };
 
@@ -41,7 +43,7 @@ const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => {
     const blankCells: JSX.Element[] = [];
     for (let i = 0; i < findFirstDayOfMonth(); i++) {
         blankCells.push(
-            <td key={i} role="presentation" className={styles.disabled}></td>
+            <td key={i} role="presentation" className={styles.disabledCalendarCell}></td>
         );
     }
 

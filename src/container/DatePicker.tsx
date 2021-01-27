@@ -9,12 +9,12 @@ import DatesOfMonth from "../components/DatesOfMonth";
 import keyDownHandler from "../utility/keyDownHandler";
 import onChangeHandler from "../utility/onChangeHandler";
 
-type DateFormat = "YYYY/MM/DD" | "YYYY/DD/MM" | "DD/MM/YY" | "MM/DD/YY" | "DD/MM/YYYY" | "MM/DD/YYYY";
 interface IDatePickerProps {
   applicationMode?: boolean;
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
-  dateFormat: DateFormat;
+  dateFormat: string;
+  validation: boolean;
 }
 
 interface IClickedDate {
@@ -35,7 +35,7 @@ interface IIsClicked {
 }
 
 const DatePicker: React.FC<IDatePickerProps> = (props) => {
-  const { value, setValue, dateFormat } = props
+  const { value, setValue, dateFormat, validation } = props
   const applicationMode = props.applicationMode ? true : false;
   const [showCalendar, setShowCalendar] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -94,12 +94,13 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
   return (
     <>
       <div onKeyDown={(e) => escCalendar(e)}>
-        <label htmlFor="date-picker-input" className={styles.label} aria-label="enter date in the following format">{dateFormat}</label><br />
+        <label htmlFor="date-picker-input" className={styles.labelDatePicker} aria-label="enter date in the following format">{dateFormat}</label><br />
         <button className={styles.iconButton} aria-label={showCalendar ? "select to close calendar" : "select to open calendar"} type="button" onClick={showCalendarHandler}><CalendarIcon /></button>
-        <input className={styles.inputField} id="date-picker-input" type="text" aria-label={value.length > 1 ? "entered date value is" : `enter date in format ${dateFormat}`} autoComplete="off" value={value} onChange={(e) => onChangeHandler(e, dateFormat, setValue, setErrorMessage, setClickedDate, setIsClicked)} />
+        <input className={styles.inputFieldDatePicker} id="date-picker-input" type="text" aria-label={value.length > 1 ? "entered date value is" : `enter date in format ${dateFormat}`} autoComplete="off" value={value}
+          onChange={(e) => onChangeHandler(e, dateFormat, validation, setValue, setErrorMessage, setClickedDate, setIsClicked)} />
         {errorMessage && <div aria-live="assertive" role="alert"><p style={{ color: "#871111", padding: "4px" }} >{errorMessage}</p></div>}
       </div>
-      <div className={showCalendar ? styles.calendarContainer : styles.hidden} {...(applicationMode ? { role: "application" } : {})} >
+      <div className={showCalendar ? styles.calendarContainer : styles.hiddenCalendar} {...(applicationMode ? { role: "application" } : {})} >
         <MonthPicker
           currentDate={dateObject}
           clickedDate={clickedDate}
@@ -115,6 +116,7 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
             showCalendarHandler={showCalendarHandler}
             isClicked={isClicked}
             setIsClicked={setIsClicked}
+            setErrorMesage={setErrorMessage}
           />
         </table>
       </div>

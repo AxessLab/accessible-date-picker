@@ -1,17 +1,19 @@
 declare namespace StylesDatePickerCssNamespace {
   export interface IStylesDatePickerCss {
+    abbrDays: string;
     calendarCells: string;
     calendarContainer: string;
     calendarTableContainer: string;
     clickedDateButton: string;
-    disabled: string;
-    hidden: string;
+    disabledCalendarCell: string;
+    h2DatePicker: string;
+    hiddenCalendar: string;
     iconButton: string;
-    inputField: string;
-    label: string;
+    inputFieldDatePicker: string;
+    labelDatePicker: string;
     monthSelectionButtons: string;
-    nextButton: string;
-    previousButton: string;
+    nextCalendarButton: string;
+    previousCalendarButton: string;
   }
 }
 

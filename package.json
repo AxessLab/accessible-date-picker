@@ -5,7 +5,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "https://github.com/AxessLab/accessible-date-picker",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AxessLab/accessible-date-picker"
+  },
   "homepage": ".",
   "license": "MIT",
   "description": "An accessible datepicker. Supports natural language manual input, keyboard and screen readers.",
@@ -27,7 +30,8 @@
     "keyboard"
   ],
   "dependencies": {
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "react-jss": "^10.5.1"
   },
   "peerDependencies": {
     "react": "^17.0.1",

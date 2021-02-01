@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import moment from "moment";
-import styles from "../styles/stylesDatePicker.css";
+import { createUseStyles, useTheme } from 'react-jss';
 
 import CalendarIcon from "../components/CalendarIcon";
 import MonthPicker from "../components/MonthPicker";
@@ -34,8 +34,53 @@ interface IIsClicked {
   selected: boolean
 }
 
+const useStyles = createUseStyles({
+  labelDatePicker: {
+    fontStyle: "italic",
+    fontSize: "smaller",
+  },
+  inputFieldDatePicker: {
+    padding: "10px 10px 10px 36px",
+    textAlign: "left",
+  },
+  iconButton: {
+    background: "none",
+    position: "absolute",
+    padding: ({ theme }) => theme.spacing[2],
+    border: "none",
+    color: ({ theme }) => theme.palette.secondary,
+    textAlign: "center",
+  },
+  calendarContainer: {
+    backgroundColor: ({ theme }) => theme.palette.primary,
+    display: "inline-block",
+    boxSizing: "content-box",
+    position: "absolute",
+    textAlign: "center",
+    borderRadius: ({ theme }) => theme.spacing[2],
+    boxShadow: '0px 1px 9px 3px rgba(133, 130, 133, 1) ',
+    "-webkit-box-shadow": "0px 1px 9px 3px rgba(133, 130, 133, 1)",
+    "-moz-box-shadow": "0px 1px 9px 3px rgba(133, 130, 133, 1)",
+  },
+  calendarTableContainer: {
+    boxSizing: "content-box",
+    display: "inline-table",
+    backgroundColor: ({ theme }) => theme.palette.primary,
+    borderTop: "solid 2px",
+    borderTopColor: ({ theme }) => theme.palette.secondary,
+    borderRadius: "0 0 5px 5px",
+    padding: "16px 16px 0px 16px",
+  },
+  hiddenCalendar: {
+    display: "none"
+  }
+});
+
 const DatePicker: React.FC<IDatePickerProps> = (props) => {
   const { value, setValue, dateFormat, validation } = props
+  const theme = useTheme();
+  const styles = useStyles({ ...props, theme });
+
   const applicationMode = props.applicationMode ? true : false;
   const [showCalendar, setShowCalendar] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");

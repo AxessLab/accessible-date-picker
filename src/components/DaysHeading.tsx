@@ -1,8 +1,19 @@
 import React from "react";
-import styles from "../styles/stylesDatePicker.css";
+import { createUseStyles, useTheme } from 'react-jss';
 
-const DaysHeading: React.FC = () => {
+const useStyles = createUseStyles({
+    abbrDays: {
+        border: "none",
+        textDecoration: "none",
+        padding: ({ theme }) => theme.spacing[2],
+        color: ({ theme }) => theme.palette.tertiary,
+    }
+});
+
+const DaysHeading: React.FC = (props) => {
     const weekdaysAbbr = ['Sunday', 'Monday', 'Tueday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const theme = useTheme();
+    const styles = useStyles({ ...props, theme });
 
     return (
         <thead role='presentation'>

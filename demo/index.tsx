@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
 import DatePicker from "../src/container/DatePicker";
-import { ThemeProvider } from 'react-jss';
-import datePickerTheme from "../src/styles/datePickerTheme";
 
 function App() {
 
@@ -24,7 +22,6 @@ function App() {
     };
 
     return (
-        <ThemeProvider theme={datePickerTheme}>
             <form aria-labelledby="form-example" onSubmit={e => preventDefault(e)} method="post">
                 <h1>Accessible Date Picker</h1>
                 <label htmlFor="name">Name:</label> <br />
@@ -32,9 +29,7 @@ function App() {
                 <label htmlFor="date-picker-input">Date:</label><br />
                 <DatePicker value={value} setValue={setValue} dateFormat="DD.MM.YYYY" validation={true} />
                 <button style={{ marginTop: "12px" }} type="submit" value="Submit" onClick={(e) => submitForm(e)}>Submit</button>
-            </form>
-        </ ThemeProvider>
-
+        </form>
     );
 }
 

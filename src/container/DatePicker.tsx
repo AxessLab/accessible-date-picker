@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import moment from "moment";
-import { createUseStyles, useTheme } from 'react-jss';
+import { createUseStyles, useTheme, ThemeProvider } from 'react-jss';
+import datePickerTheme from "../styles/datePickerTheme";
 
 import CalendarIcon from "../components/CalendarIcon";
 import MonthPicker from "../components/MonthPicker";
@@ -137,7 +138,7 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
   };
 
   return (
-    <>
+    <ThemeProvider theme={datePickerTheme}>
       <div onKeyDown={(e) => escCalendar(e)}>
         <label htmlFor="date-picker-input" className={styles.labelDatePicker} aria-label="enter date in the following format">{dateFormat}</label><br />
         <button className={styles.iconButton} aria-label={showCalendar ? "select to close calendar" : "select to open calendar"} type="button" onClick={showCalendarHandler}><CalendarIcon /></button>
@@ -165,7 +166,8 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
           />
         </table>
       </div>
-    </>
+    </ThemeProvider>
+
   );
 };
 

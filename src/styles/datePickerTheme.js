@@ -1,11 +1,4 @@
 const datePickerTheme = {
-    root: {
-        '& > *': {
-            margin: 0,
-            padding: 0,
-            boxSizing: "content-box",
-        }
-    },
     palette: {
         primary: "#f5f5f5",
         secondary: "#2b4450",

@@ -41,10 +41,10 @@ const useStyles = createUseStyles({
         float: "left",
     },
     nextCalendarButton: {
-        float: " right",
+        float: "right",
     },
     h2Month: {
-        margin: "0px",
+        margin: ({ theme }) => theme.spacing[0],
         lineHeight: ({ theme }) => theme.spacing[2],
         padding: ({ theme }) => theme.spacing[3],
         boxSizing: "content-box",

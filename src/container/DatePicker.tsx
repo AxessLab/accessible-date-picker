@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import moment from "moment";
-import { createUseStyles, useTheme, ThemeProvider } from 'react-jss';
+import { createUseStyles, ThemeProvider } from 'react-jss';
 import datePickerTheme from "../styles/datePickerTheme";
 
 import CalendarIcon from "../components/CalendarIcon";
@@ -16,6 +16,16 @@ interface IDatePickerProps {
   setValue: React.Dispatch<React.SetStateAction<string>>;
   dateFormat: string;
   validation: boolean;
+  theme?: ITheme;
+}
+
+interface ITheme {
+  palette: {
+    primary: string,
+    secondary: string,
+    tertiary: string,
+  },
+  spacing: string[],
 }
 
 interface IClickedDate {
@@ -35,52 +45,52 @@ interface IIsClicked {
   selected: boolean
 }
 
-const useStyles = createUseStyles({
-  labelDatePicker: {
-    fontStyle: "italic",
-    fontSize: "smaller",
-  },
-  inputFieldDatePicker: {
-    padding: "10px 10px 10px 36px",
-    textAlign: "left",
-  },
-  iconButton: {
-    background: "none",
-    position: "absolute",
-    padding: ({ theme }) => theme.spacing[2],
-    border: "none",
-    color: ({ theme }) => theme.palette.secondary,
-    textAlign: "center",
-  },
-  calendarContainer: {
-    backgroundColor: ({ theme }) => theme.palette.primary,
-    display: "inline-block",
-    boxSizing: "content-box",
-    position: "absolute",
-    textAlign: "center",
-    borderRadius: ({ theme }) => theme.spacing[2],
-    boxShadow: '0px 1px 9px 3px rgba(133, 130, 133, 1) ',
-    "-webkit-box-shadow": "0px 1px 9px 3px rgba(133, 130, 133, 1)",
-    "-moz-box-shadow": "0px 1px 9px 3px rgba(133, 130, 133, 1)",
-  },
-  calendarTableContainer: {
-    boxSizing: "content-box",
-    display: "inline-table",
-    backgroundColor: ({ theme }) => theme.palette.primary,
-    borderTop: "solid 2px",
-    borderTopColor: ({ theme }) => theme.palette.secondary,
-    borderRadius: "0 0 5px 5px",
-    padding: "16px 16px 0px 16px",
-  },
-  hiddenCalendar: {
-    display: "none"
-  }
-});
-
 const DatePicker: React.FC<IDatePickerProps> = (props) => {
-  const { value, setValue, dateFormat, validation } = props
-  const theme = useTheme();
-  const styles = useStyles({ ...props, theme });
+  const { value, setValue, dateFormat, validation, theme } = props
+  const usedTheme = theme ? theme : datePickerTheme;
+  const useStyles = createUseStyles({
+    labelDatePicker: {
+      fontStyle: "italic",
+      fontSize: "smaller",
+    },
+    inputFieldDatePicker: {
+      padding: [usedTheme.spacing[2] + " " + usedTheme.spacing[2] + " " + usedTheme.spacing[2] + " " + usedTheme.spacing[4]],
+      textAlign: "left",
+    },
+    iconButton: {
+      background: "none",
+      position: "absolute",
+      padding: usedTheme.spacing[2],
+      border: "none",
+      color: usedTheme.palette.secondary && usedTheme.palette.secondary,
+      textAlign: "center",
+    },
+    calendarContainer: {
+      backgroundColor: usedTheme.palette.primary ? usedTheme.palette.primary : null,
+      display: "inline-block",
+      boxSizing: "content-box",
+      position: "absolute",
+      textAlign: "center",
+      borderRadius: usedTheme.spacing[2] && usedTheme.spacing[2],
+      boxShadow: '0px 1px 9px 3px rgba(133, 130, 133, 1) ',
+      "-webkit-box-shadow": "0px 1px 9px 3px rgba(133, 130, 133, 1)",
+      "-moz-box-shadow": "0px 1px 9px 3px rgba(133, 130, 133, 1)",
+    },
+    calendarTableContainer: {
+      boxSizing: "content-box",
+      display: "inline-table",
+      backgroundColor: usedTheme.palette.primary ? usedTheme.palette.primary : null,
+      borderTop: "solid 2px",
+      borderTopColor: usedTheme.palette.secondary ? usedTheme.palette.secondary : null,
+      borderRadius: [usedTheme.spacing[0] + " " + usedTheme.spacing[0] + " " + usedTheme.spacing[1] + " " + usedTheme.spacing[1]],
+      padding: [usedTheme.spacing[3] + " " + usedTheme.spacing[3] + " " + usedTheme.spacing[0] + " " + usedTheme.spacing[3]],
+    },
+    hiddenCalendar: {
+      display: "none"
+    }
+  });
+
+  const styles = useStyles({ ...props });
 
   const applicationMode = props.applicationMode ? true : false;
   const [showCalendar, setShowCalendar] = useState(false);
@@ -138,10 +148,12 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
   };
 
   return (
-    <ThemeProvider theme={datePickerTheme}>
+    <ThemeProvider theme={usedTheme}>
       <div onKeyDown={(e) => escCalendar(e)}>
         <label htmlFor="date-picker-input" className={styles.labelDatePicker} aria-label="enter date in the following format">{dateFormat}</label><br />
-        <button className={styles.iconButton} aria-label={showCalendar ? "select to close calendar" : "select to open calendar"} type="button" onClick={showCalendarHandler}><CalendarIcon /></button>
+        <button className={styles.iconButton} aria-label={showCalendar ? "select to close calendar" : "select to open calendar"} type="button" onClick={showCalendarHandler}>
+          <CalendarIcon />
+        </button>
         <input className={styles.inputFieldDatePicker} id="date-picker-input" type="text" aria-label={value.length > 1 ? "entered date value is" : `enter date in format ${dateFormat}`} autoComplete="off" value={value}
           onChange={(e) => onChangeHandler(e, dateFormat, validation, setValue, setErrorMessage, setClickedDate, setIsClicked)} />
         {errorMessage && <div aria-live="assertive" role="alert"><p style={{ color: "#871111", padding: "4px" }} >{errorMessage}</p></div>}
@@ -167,7 +179,6 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
         </table>
       </div>
     </ThemeProvider>
-
   );
 };
 

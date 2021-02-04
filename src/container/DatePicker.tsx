@@ -90,7 +90,7 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
     }
   });
 
-  const styles = useStyles({ ...props });
+  const styles = useStyles({ ...props, usedTheme });
 
   const applicationMode = props.applicationMode ? true : false;
   const [showCalendar, setShowCalendar] = useState(false);
@@ -164,7 +164,7 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
           clickedDate={clickedDate}
           setDateObject={setDateObject} />
         <table id='calendar-table' className={styles.calendarTableContainer} role="presentation" onKeyDown={() => applicationKeyHandler(applicationMode)} >
-          <DaysHeading />
+          <DaysHeading theme={usedTheme} />
           <DatesOfMonth
             applicationMode={applicationMode}
             year={dateObject.year}

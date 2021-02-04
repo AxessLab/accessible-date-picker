@@ -1,14 +1,15 @@
 import React from "react";
 import { createUseStyles, useTheme } from 'react-jss';
+import { withTheme } from 'theming';
 
-const useStyles = createUseStyles({
+const useStyles = createUseStyles(theme => ({
     abbrDays: {
         border: "none",
         textDecoration: "none",
-        padding: ({ theme }) => theme.spacing[2],
-        color: ({ theme }) => theme.palette.tertiary,
+        padding: theme.spacing[2],
+        color: theme.palette.tertiary,
     }
-});
+}));
 
 const DaysHeading: React.FC = (props) => {
     const weekdaysAbbr = ['Sunday', 'Monday', 'Tueday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -30,4 +31,4 @@ const DaysHeading: React.FC = (props) => {
     );
 };
 
-export default DaysHeading;
+export default withTheme(DaysHeading);

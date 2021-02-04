@@ -1,6 +1,7 @@
 import React from "react";
 import moment from 'moment';
 import { createUseStyles, useTheme } from 'react-jss';
+import { IDatePickerTheme } from '../container/DatePicker';
 
 interface IIsClicked {
     buttonId: string,
@@ -19,23 +20,23 @@ interface IDaysOfMonthsProps {
     setErrorMesage: (value: string) => void
 }
 
-const useStyles = createUseStyles({
+const useStyles = createUseStyles((theme: IDatePickerTheme) => ({
     disabledCalendarCell: {
-        backgroundColor: ({ theme }) => theme.palette.primary,
+        backgroundColor: theme.palette.primary,
     },
     calendarCells: {
-        width: ({ theme }) => theme.spacing[4],
-        height: ({ theme }) => theme.spacing[4],
+        width: theme.spacing[4],
+        height: theme.spacing[4],
         border: "none",
-        backgroundColor: ({ theme }) => theme.palette.primary,
-        color: ({ theme }) => theme.palette.secondary,
+        backgroundColor: theme.palette.primary,
+        color: theme.palette.secondary,
     },
     clickedDateButton: {
-        backgroundColor: ({ theme }) => theme.palette.secondary,
+        backgroundColor: theme.palette.secondary,
         borderRadius: "50%",
-        color: ({ theme }) => theme.palette.primary,
+        color: theme.palette.primary,
     }
-});
+}));
 
 const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => {
     const { year, month, datesOfMonth, applicationMode, setClickedDate, showCalendarHandler, isClicked, setIsClicked, setErrorMesage } = props

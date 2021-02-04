@@ -1,13 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`datePicker changes input state value 1`] = `
-<Fragment>
+<ThemeProvider
+  theme={
+    Object {
+      "palette": Object {
+        "primary": "#f5f5f5",
+        "secondary": "#2b4450",
+        "tertiary": "#871111",
+      },
+      "spacing": Array [
+        "0px",
+        "4px",
+        "8px",
+        "16px",
+        "32px",
+        "64px",
+      ],
+    }
+  }
+>
   <div
     onKeyDown={[Function]}
   >
     <label
       aria-label="enter date in the following format"
-      className="labelDatePicker"
+      className="labelDatePicker-0-2-1"
       htmlFor="date-picker-input"
     >
       YYYY/MM/DD
@@ -15,7 +33,7 @@ exports[`datePicker changes input state value 1`] = `
     <br />
     <button
       aria-label="select to open calendar"
-      className="iconButton"
+      className="iconButton-0-2-3"
       onClick={[Function]}
       type="button"
     >
@@ -24,7 +42,7 @@ exports[`datePicker changes input state value 1`] = `
     <input
       aria-label="enter date in format YYYY/MM/DD"
       autoComplete="off"
-      className="inputFieldDatePicker"
+      className="inputFieldDatePicker-0-2-2"
       id="date-picker-input"
       onChange={[Function]}
       type="text"
@@ -32,7 +50,7 @@ exports[`datePicker changes input state value 1`] = `
     />
   </div>
   <div
-    className="hiddenCalendar"
+    className="hiddenCalendar-0-2-6"
   >
     <MonthPicker
       clickedDate={
@@ -44,15 +62,15 @@ exports[`datePicker changes input state value 1`] = `
       }
       currentDate={
         Object {
-          "dates": 31,
-          "month": 0,
+          "dates": 28,
+          "month": 1,
           "year": 2021,
         }
       }
       setDateObject={[Function]}
     />
     <table
-      className="calendarTableContainer"
+      className="calendarTableContainer-0-2-5"
       id="calendar-table"
       onKeyDown={[Function]}
       role="presentation"
@@ -60,14 +78,14 @@ exports[`datePicker changes input state value 1`] = `
       <DaysHeading />
       <DatesOfMonth
         applicationMode={false}
-        datesOfMonth={31}
+        datesOfMonth={28}
         isClicked={
           Object {
             "buttonId": "button-2",
             "selected": true,
           }
         }
-        month={0}
+        month={1}
         setClickedDate={[Function]}
         setErrorMesage={[Function]}
         setIsClicked={[Function]}
@@ -76,5 +94,5 @@ exports[`datePicker changes input state value 1`] = `
       />
     </table>
   </div>
-</Fragment>
+</ThemeProvider>
 `;

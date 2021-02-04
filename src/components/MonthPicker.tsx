@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import { createUseStyles, useTheme } from 'react-jss';
+import { IDatePickerTheme } from '../container/DatePicker';
 
 interface ISetDateObject {
     year: number;
@@ -22,19 +23,19 @@ interface IMonthPickerProps {
     setDateObject: (object: ISetDateObject) => void;
 }
 
-const useStyles = createUseStyles({
+const useStyles = createUseStyles((theme: IDatePickerTheme) => ({
     monthSelectionButtons: {
         boxSizing: "content-box",
         border: "none",
-        lineHeight: ({ theme }) => theme.spacing[2],
-        padding: ({ theme }) => theme.spacing[3],
-        color: ({ theme }) => theme.palette.tertiary,
-        backgroundColor: ({ theme }) => theme.palette.primary,
+        lineHeight: theme.spacing[2],
+        padding: theme.spacing[3],
+        color: theme.palette.tertiary,
+        backgroundColor: theme.palette.primary,
         fontSize: "medium",
         textDecoration: "underline",
         '&:hover': {
-            color: ({ theme }) => theme.palette.primary,
-            backgroundColor: ({ theme }) => theme.palette.tertiary,
+            color: theme.palette.primary,
+            backgroundColor: theme.palette.tertiary,
         },
     },
     previousCalendarButton: {
@@ -44,15 +45,15 @@ const useStyles = createUseStyles({
         float: "right",
     },
     h2Month: {
-        margin: ({ theme }) => theme.spacing[0],
-        lineHeight: ({ theme }) => theme.spacing[2],
-        padding: ({ theme }) => theme.spacing[3],
+        margin: theme.spacing[0],
+        lineHeight: theme.spacing[2],
+        padding: theme.spacing[3],
         boxSizing: "content-box",
         display: "inline-block",
-        backgroundColor: ({ theme }) => theme.palette.primary,
-        color: ({ theme }) => theme.palette.secondary,
+        backgroundColor: theme.palette.primary,
+        color: theme.palette.secondary,
     }
-});
+}));
 
 const monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 

@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-import DatePicker from "../src/container/DatePicker";
+import DatePicker, { createDatePickerTheme, IDatePickerTheme } from "../src/container/DatePicker";
+
+const customTheme: IDatePickerTheme = createDatePickerTheme({
+    palette: {
+        primary: 'salmon',
+        secondary: 'blue',
+        tertiary: 'black'
+    }
+});
 
 function App() {
 

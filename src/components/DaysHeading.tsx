@@ -1,8 +1,8 @@
 import React from "react";
 import { createUseStyles, useTheme } from 'react-jss';
-import { withTheme } from 'theming';
+import { IDatePickerTheme } from '../container/DatePicker';
 
-const useStyles = createUseStyles(theme => ({
+const useStyles = createUseStyles((theme: IDatePickerTheme) => ({
     abbrDays: {
         border: "none",
         textDecoration: "none",
@@ -31,4 +31,4 @@ const DaysHeading: React.FC = (props) => {
     );
 };
 
-export default withTheme(DaysHeading);
+export default DaysHeading;

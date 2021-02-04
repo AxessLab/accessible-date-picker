@@ -16,16 +16,25 @@ interface IDatePickerProps {
   setValue: React.Dispatch<React.SetStateAction<string>>;
   dateFormat: string;
   validation: boolean;
-  theme?: ITheme;
+  theme?: IDatePickerTheme;
 }
 
-interface ITheme {
+export interface IDatePickerTheme {
   palette: {
     primary: string,
     secondary: string,
     tertiary: string,
   },
   spacing: string[],
+}
+
+export interface IDatePickerThemeOptions {
+  palette?: {
+    primary?: string,
+    secondary?: string,
+    tertiary?: string,
+  },
+  spacing?: string[],
 }
 
 interface IClickedDate {
@@ -43,6 +52,13 @@ interface IDateObject {
 interface IIsClicked {
   buttonId: string,
   selected: boolean
+}
+
+export const createDatePickerTheme = (options: IDatePickerThemeOptions): IDatePickerTheme => {
+  return {
+    ...datePickerTheme,
+    ...options
+  } as IDatePickerTheme
 }
 
 const DatePicker: React.FC<IDatePickerProps> = (props) => {
@@ -164,7 +180,7 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
           clickedDate={clickedDate}
           setDateObject={setDateObject} />
         <table id='calendar-table' className={styles.calendarTableContainer} role="presentation" onKeyDown={() => applicationKeyHandler(applicationMode)} >
-          <DaysHeading theme={usedTheme} />
+          <DaysHeading />
           <DatesOfMonth
             applicationMode={applicationMode}
             year={dateObject.year}

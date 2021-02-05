@@ -4,12 +4,13 @@ import ReactDOM from "react-dom";
 import DatePicker, { createDatePickerTheme, IDatePickerTheme } from "../src/container/DatePicker";
 
 const customTheme: IDatePickerTheme = createDatePickerTheme({
-    palette: {
-        primary: 'salmon',
-        secondary: 'blue',
-        tertiary: 'black'
-    }
-});
+        palette: {
+        primary: "#f5f5f5",
+        secondary: "#2b4450",
+        tertiary: "#871111"
+    },
+    spacing: ["0px", "4px", "8px", "16px", "32px", "64px"],
+    });
 
 function App() {
 
@@ -35,7 +36,7 @@ function App() {
             <label htmlFor="name">Name:</label> <br />
             <input style={{ padding: "10px 10px 10px 36px", textAlign: "left" }} type="text" id="name" autoComplete="off" onChange={(e) => handleNameData(e)}></input><br />
             <label htmlFor="date-picker-input">Date:</label><br />
-            <DatePicker value={value} setValue={setValue} dateFormat="DD.MM.YYYY" validation={true} />
+            <DatePicker theme={customTheme} value={value} setValue={setValue} dateFormat="DD.MM.YYYY" validation={true} />
             <button style={{ marginTop: "12px" }} type="submit" value="Submit" onClick={(e) => submitForm(e)}>Submit</button>
         </form>
     );

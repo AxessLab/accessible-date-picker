@@ -3,7 +3,7 @@ import { shallow, configure } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import toJson from 'enzyme-to-json';
 import DatesOfMonth from "../components/DatesOfMonth";
-import { ThemeProvider } from "react-jss";
+import { ThemeProvider } from 'react-jss';
 
 configure({ adapter: new Adapter() });
 
@@ -11,7 +11,7 @@ const mockSetClickedDate = jest.fn();
 const mockShowCalendarHandler = jest.fn();
 const mockSetIsClicked = jest.fn();
 const mockSetErrorMesage = jest.fn();
-const datePickerTheme = {
+const theme = {
     palette: {
         primary: "#f5f5f5",
         secondary: "#2b4450",
@@ -20,8 +20,13 @@ const datePickerTheme = {
     spacing: ["0px", "4px", "8px", "16px", "32px", "64px"],
 };
 
-const wrapper = shallow(<DatesOfMonth year={2021} month={0} datesOfMonth={31} setClickedDate={mockSetClickedDate}
-    showCalendarHandler={mockShowCalendarHandler} isClicked={false} setIsClicked={mockSetIsClicked} setErrorMesage={mockSetErrorMesage} />);
+const wrapper = shallow(
+    <ThemeProvider theme={theme}>
+        <DatesOfMonth theme={theme} year={2021} month={0} datesOfMonth={31}
+            setClickedDate={mockSetClickedDate} showCalendarHandler={mockShowCalendarHandler}
+            isClicked={false} setIsClicked={mockSetIsClicked} setErrorMesage={mockSetErrorMesage} />
+    </ThemeProvider>
+);
 
 test("renders table with correct amount of elements", () => {
     const tbody = wrapper.find('tbody');

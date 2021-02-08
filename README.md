@@ -27,7 +27,7 @@ Then the component can be used as such:
 | applicationMode | no    | boolean  | The Accessible Date Picker comes with two modes for the screen readers. By default the picker has <code>applicationMode={false}</code>, which means traditional HTML interpretion techniques will be used. But if you want to support desktop-live web like applications passing down the following attribute will make the date picker behave as such.  |
 | validation | yes   | boolean  | Set to true if you want to make use of the validation check to find errors in entered months, dates or in the number of entered characters.  |
 | dateFormat | yes     | "YYYY/MM/DD"  "DD-MM-YYYY" "MM.DD.YYYY" "DD/MM/YY" |   Enter any string format and separator you wish to use in your input element such as the examples on the left. Please note that /YY formatted years will only work as years in the 2000s. |
-| theme | no    | {customTheme} |   You can either use the built in datepicker theme or you can pass in your own custom  theme as an object. <code> const customTheme: IDatePickerTheme = createDatePickerTheme({ palette: {       primary: "#red", secondary: "blue", tertiary: "green" },  spacing: "0px", "4px", "8px", "16px", "32px", "64px"], }); </code> |
+| theme | no    | {customTheme} |   You can either use the built in datepicker theme or you can pass in your own custom  theme as an object. <code> const customTheme = { palette: {       primary: "red", secondary: "blue", tertiary: "green" },  spacing: "0px", "4px", "8px", "16px", "32px", "64px"], }); </code> |
 | value | yes      |    {value} | To get started you can define a state for value and setValue and pass it down to the component or pass a value you have created as a prop. Exp:  <code>const [value, setValue] = useState('');</code>
 | setValue | yes      |    {setValue} | To get started you can define a state for value and setValue and pass it down to the component or pass a value you have created as a prop. Exp: <code>const [value, setValue] = useState('');</code> | 
 <br/>
@@ -59,6 +59,10 @@ We are always open to contributions and improvements. If you find bugs or know o
 1. Forking the Accessible Date Pickers repository on github
 2. Clone the repository by running git clone https://github.com/AxessLab/accessible-date-picker.git
 3. Once cloned, open the directory and <code>run npm install.</code>
+4. Change the webpack entry point to: <code>./demo/index.tsx</code> and output to <code> output: {
+    path: path.resolve(__dirname, "build"),
+    filename: "bundle.js",
+  },</code>
 4. Run <code>npm start</code> to get the development server up and running. Make your changes in the code.
 5. When you're happy, push the code and make a pull request - we will look at it as soon as possible.
 

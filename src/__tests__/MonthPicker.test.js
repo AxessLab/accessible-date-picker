@@ -23,8 +23,6 @@ const theme = {
     spacing: ["0px", "4px", "8px", "16px", "32px", "64px"],
 };
 
-
-
 const wrapper = shallow(<ThemeProvider theme={theme}><MonthPicker currentDate={currentDate} clickedDate={clickedDate} setDateObject={mockSetDateObject} /></ThemeProvider>);
 
 test("renders correct heading that changes with next/previous", () => {

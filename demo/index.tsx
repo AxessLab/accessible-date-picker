@@ -34,7 +34,7 @@ function App() {
         <form aria-labelledby="form-example" onSubmit={e => preventDefault(e)} method="post">
             <h1>Accessible Date Picker</h1>
             <label htmlFor="name">Name:</label> <br />
-            <input style={{ padding: "10px 10px 10px 36px", textAlign: "left" }} type="text" id="name" autoComplete="off" onChange={(e) => handleNameData(e)}></input><br />
+            <input style={{ padding: "8px 8px 8px 32px", textAlign: "left" }} type="text" id="name" autoComplete="off" onChange={(e) => handleNameData(e)}></input><br />
             <label htmlFor="date-picker-input">Date:</label><br />
             <DatePicker theme={customTheme} value={value} setValue={setValue} dateFormat="DD.MM.YYYY" validation={true} />
             <button style={{ marginTop: "12px" }} type="submit" value="Submit" onClick={(e) => submitForm(e)}>Submit</button>

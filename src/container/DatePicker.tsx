@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import moment from "moment";
 import { createUseStyles, ThemeProvider } from 'react-jss';
 import datePickerTheme from "../styles/datePickerTheme";
@@ -82,7 +82,7 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
       textAlign: "center",
     },
     calendarContainer: {
-      backgroundColor: usedTheme.palette.primary ? usedTheme.palette.primary : null,
+      backgroundColor: usedTheme.palette.primary && usedTheme.palette.primary,
       display: "inline-block",
       boxSizing: "content-box",
       position: "absolute",
@@ -95,9 +95,9 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
     calendarTableContainer: {
       boxSizing: "content-box",
       display: "inline-table",
-      backgroundColor: usedTheme.palette.primary ? usedTheme.palette.primary : null,
+      backgroundColor: usedTheme.palette.primary && usedTheme.palette.primary,
       borderTop: "solid 2px",
-      borderTopColor: usedTheme.palette.secondary ? usedTheme.palette.secondary : null,
+      borderTopColor: usedTheme.palette.secondary && usedTheme.palette.secondary,
       borderRadius: [usedTheme.spacing[0] + " " + usedTheme.spacing[0] + " " + usedTheme.spacing[1] + " " + usedTheme.spacing[1]],
       padding: [usedTheme.spacing[3] + " " + usedTheme.spacing[3] + " " + usedTheme.spacing[0] + " " + usedTheme.spacing[3]],
     },
@@ -109,6 +109,7 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
   const styles = useStyles({ ...props, usedTheme });
 
   const applicationMode = props.applicationMode ? true : false;
+  const focusInput = useRef<HTMLInputElement>(null);
   const [showCalendar, setShowCalendar] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [clickedDate, setClickedDate] = useState<IClickedDate>({});
@@ -150,6 +151,9 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
   const escCalendar = (event: React.KeyboardEvent) => {
     if (event.key === "Escape") {
       setShowCalendar(false);
+      if (null !== focusInput.current) {
+        focusInput.current.focus();
+      }
     }
   };
 
@@ -170,11 +174,11 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
         <button className={styles.iconButton} aria-label={showCalendar ? "select to close calendar" : "select to open calendar"} type="button" onClick={showCalendarHandler}>
           <CalendarIcon />
         </button>
-        <input className={styles.inputFieldDatePicker} id="date-picker-input" type="text" aria-label={value.length > 1 ? "entered date value is" : `enter date in format ${dateFormat}`} autoComplete="off" value={value}
+        <input ref={focusInput} className={styles.inputFieldDatePicker} id="date-picker-input" type="text" aria-label={value.length > 1 ? "entered date value is" : `enter date in format ${dateFormat}`} autoComplete="off" value={value}
           onChange={(e) => onChangeHandler(e, dateFormat, validation, setValue, setErrorMessage, setClickedDate, setIsClicked)} />
         {errorMessage && <div aria-live="assertive" role="alert"><p style={{ color: "#871111", padding: "4px" }} >{errorMessage}</p></div>}
       </div>
-      <div className={showCalendar ? styles.calendarContainer : styles.hiddenCalendar} {...(applicationMode ? { role: "application" } : {})} >
+      <div onKeyDown={(e) => escCalendar(e)} className={showCalendar ? styles.calendarContainer : styles.hiddenCalendar} {...(applicationMode ? { role: "application" } : {})} >
         <MonthPicker
           currentDate={dateObject}
           clickedDate={clickedDate}
@@ -186,9 +190,10 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
             year={dateObject.year}
             month={dateObject.month}
             datesOfMonth={dateObject.dates}
-            setClickedDate={setClickedDate}
-            showCalendarHandler={showCalendarHandler}
+            showCalendar={showCalendar}
+            setShowCalendar={setShowCalendar}
             isClicked={isClicked}
+            setClickedDate={setClickedDate}
             setIsClicked={setIsClicked}
             setErrorMesage={setErrorMessage}
           />

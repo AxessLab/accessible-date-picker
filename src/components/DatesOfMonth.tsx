@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import moment from 'moment';
 import { createUseStyles, useTheme } from 'react-jss';
 import { IDatePickerTheme } from '../container/DatePicker';
@@ -14,10 +14,11 @@ interface IDaysOfMonthsProps {
     datesOfMonth: number;
     applicationMode?: boolean;
     setClickedDate: ({ }) => void;
-    showCalendarHandler: () => void;
+    showCalendar: boolean;
+    setShowCalendar: (value: boolean) => void;
     isClicked: IIsClicked;
-    setIsClicked: (object: IIsClicked) => void
-    setErrorMesage: (value: string) => void
+    setIsClicked: (object: IIsClicked) => void;
+    setErrorMesage: (value: string) => void;
 }
 
 const useStyles = createUseStyles((theme: IDatePickerTheme) => ({
@@ -39,7 +40,8 @@ const useStyles = createUseStyles((theme: IDatePickerTheme) => ({
 }));
 
 const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => {
-    const { year, month, datesOfMonth, applicationMode, setClickedDate, showCalendarHandler, isClicked, setIsClicked, setErrorMesage } = props
+    const { year, month, datesOfMonth, applicationMode, setClickedDate, showCalendar, setShowCalendar, isClicked, setIsClicked, setErrorMesage } = props
+    const focusInput = useRef<HTMLInputElement>(null);
     const theme = useTheme();
     const styles = useStyles({ ...props, theme });
 
@@ -47,7 +49,12 @@ const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => {
         setClickedDate({ year: year, month: month + 1, date: date });
         setIsClicked({ buttonId: buttonId, selected: true });
         setErrorMesage("");
-        showCalendarHandler();
+        setShowCalendar(false);
+        if (showCalendar === false) {
+            if (null !== focusInput.current) {
+                focusInput.current.focus();
+            }
+        }
     };
 
     const findFirstDayOfMonth = () => {

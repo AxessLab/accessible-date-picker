@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import moment from 'moment';
 import { createUseStyles, useTheme } from 'react-jss';
 import { IDatePickerTheme } from '../container/DatePicker';
@@ -14,7 +14,6 @@ interface IDaysOfMonthsProps {
     datesOfMonth: number;
     applicationMode?: boolean;
     setClickedDate: ({ }) => void;
-    showCalendar: boolean;
     setShowCalendar: (value: boolean) => void;
     isClicked: IIsClicked;
     setIsClicked: (object: IIsClicked) => void;
@@ -39,9 +38,8 @@ const useStyles = createUseStyles((theme: IDatePickerTheme) => ({
     }
 }));
 
-const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => {
-    const { year, month, datesOfMonth, applicationMode, setClickedDate, showCalendar, setShowCalendar, isClicked, setIsClicked, setErrorMesage } = props
-    const focusInput = useRef<HTMLInputElement>(null);
+const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => { 
+    const { year, month, datesOfMonth, applicationMode, setClickedDate, setShowCalendar, isClicked, setIsClicked, setErrorMesage } = props
     const theme = useTheme();
     const styles = useStyles({ ...props, theme });
 
@@ -50,11 +48,7 @@ const DatesOfMonth: React.FC<IDaysOfMonthsProps> = (props) => {
         setIsClicked({ buttonId: buttonId, selected: true });
         setErrorMesage("");
         setShowCalendar(false);
-        if (showCalendar === false) {
-            if (null !== focusInput.current) {
-                focusInput.current.focus();
-            }
-        }
+        (document.getElementById("date-picker-input") as HTMLInputElement).focus();
     };
 
     const findFirstDayOfMonth = () => {

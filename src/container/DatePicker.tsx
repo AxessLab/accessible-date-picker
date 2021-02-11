@@ -190,7 +190,6 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
             year={dateObject.year}
             month={dateObject.month}
             datesOfMonth={dateObject.dates}
-            showCalendar={showCalendar}
             setShowCalendar={setShowCalendar}
             isClicked={isClicked}
             setClickedDate={setClickedDate}

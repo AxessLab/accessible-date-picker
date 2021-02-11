@@ -11,10 +11,6 @@ interface IIsClicked {
     selected: boolean
 }
 
-interface IIsClicked {
-    buttonId: string,
-    selected: boolean
-}
 
 const onChangeHandler = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -40,7 +36,7 @@ const onChangeHandler = (
             case 3:
                 error = "Please check date format!"
             default:
-                error = "Date doesn't match format!"
+                error = "date, it doesn't match format!"
         }
         return error;
     };

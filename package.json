@@ -1,6 +1,6 @@
 {
   "name": "accessible-date-picker",
-  "version": "3.7.5",
+  "version": "3.7.6",
   "main": "dist/index.js",
   "publishConfig": {
     "access": "public"

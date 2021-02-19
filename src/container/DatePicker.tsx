@@ -176,7 +176,7 @@ const DatePicker: React.FC<IDatePickerProps> = (props) => {
         </button>
         <input ref={focusInput} className={styles.inputFieldDatePicker} id="date-picker-input" type="text" aria-label={value.length > 1 ? "entered date value is" : `enter date in format ${dateFormat}`} autoComplete="off" value={value}
           onChange={(e) => onChangeHandler(e, dateFormat, validation, setValue, setErrorMessage, setClickedDate, setIsClicked)} />
-        {errorMessage && <div aria-live="assertive" role="alert"><p style={{ color: "#871111", padding: "4px" }} >{errorMessage}</p></div>}
+        {errorMessage && <div aria-live="assertive" role="alert"><p style={{ color: "#871111", padding: "4px", margin: "4px" }} >{errorMessage}</p></div>}
       </div>
       <div onKeyDown={(e) => escCalendar(e)} className={showCalendar ? styles.calendarContainer : styles.hiddenCalendar} {...(applicationMode ? { role: "application" } : {})} >
         <MonthPicker

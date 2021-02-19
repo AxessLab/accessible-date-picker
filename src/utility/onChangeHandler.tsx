@@ -36,7 +36,7 @@ const onChangeHandler = (
             case 3:
                 error = "Please check date format!"
             default:
-                error = "date, it doesn't match format!"
+                error = "Please check date, it doesn't match format!"
         }
         return error;
     };

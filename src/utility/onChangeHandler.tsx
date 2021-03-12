@@ -50,7 +50,11 @@ const onChangeHandler = (
         else {
             const invalidAt = dateFormatCheck.invalidAt();
             const errorNote = "Please check entered ";
-            validation && setErrorMessage(errorNote + errorDefinition(invalidAt));
+           if (invalidAt > 0 && invalidAt <= 3 ) {
+                validation && setErrorMessage(errorNote + errorDefinition(invalidAt));
+            } else {
+                validation && setErrorMessage(errorDefinition(invalidAt));
+            };
         }
     };
 
